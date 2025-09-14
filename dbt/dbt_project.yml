@@ -1,0 +1,14 @@
+name: api_bi_project
+version: 1.0.0
+config-version: 2
+profile: api_bi_profile
+model-paths: ["models"]
+
+models:
+  api_bi_project:          # must equal `name:` above
+    staging:               # must be a folder: models/staging/*
+      +materialized: view
+      +schema: staging
+    marts:                 # must be a folder: models/marts/*
+      +materialized: table
+      +schema: analytics

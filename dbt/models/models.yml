@@ -1,0 +1,32 @@
+version: 2
+models:
+  - name: stg_customers
+    columns:
+      - name: customer_id
+        tests: [not_null, unique]
+      - name: country
+        tests: [not_null]
+  - name: stg_payments
+    columns:
+      - name: payment_id
+        tests: [not_null, unique]
+      - name: status
+        tests:
+          - accepted_values:
+              values: [succeeded, failed, refunded]
+  - name: stg_sessions
+    columns:
+      - name: session_id
+        tests: [not_null, unique]
+      - name: source
+        tests:
+          - accepted_values:
+              values: [google, direct, facebook, linkedin, newsletter, referral, bing]
+  - name: fct_revenue_daily
+    columns:
+      - name: order_day
+        tests: [not_null]
+  - name: fct_marketing_attribution
+    columns:
+      - name: session_day
+        tests: [not_null]

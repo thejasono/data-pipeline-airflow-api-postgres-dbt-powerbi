@@ -1,0 +1,646 @@
+services:
+  postgres:
+    # --------------------------------------------------------------------------
+    # Image — quick breakdown (what it is, how to pin, and why it matters)
+    #
+    # What “image” means:
+    # - A packaged filesystem + default ENTRYPOINT/CMD for a container runtime.
+    # - Comes from a registry (e.g., Docker Hub) and is identified by a *name*
+    #   and a *tag* (and optionally a *digest*).
+    #
+    # Tag semantics:
+    # - `postgres:16`  → tracks the latest *16.x* release (rolling minor/patch).
+    # - `postgres:16.4`→ pins to an exact minor (only patch updates if re-tagged).
+    # - `postgres:16@sha256:<digest>` → immutable pin to an exact build (strongest
+    #   reproducibility; digest wins over tag if both are present).
+    #
+    # Why pin:
+    # - Reproducibility: avoid surprise upgrades from `latest`.
+    # - Security: you still want to periodically update to pick up CVEs, but under
+    #   your control (bump 16.x → newer 16.x; test; then deploy).
+    #
+    # OS flavor differences:
+    # - Debian (default) vs `-alpine` variants differ in libc (glibc vs musl) and
+    #   available packages. Extensions/tools you need may not be available on Alpine.
+    #
+    # CPU/arch:
+    # - Multi-arch images support `amd64` and `arm64`. If you need to force one:
+    #     platform: linux/amd64
+    #
+    # ENTRYPOINT/CMD:
+    # - The official image’s entrypoint initializes the data dir and runs Postgres.
+    #   It also executes /docker-entrypoint-initdb.d/* on *first init* only.
+    #
+    # Update workflow (practical):
+    # - Start with `postgres:16` for convenience → later narrow to `16.x` after testing.
+    # - Consider digest pinning in CI/CD for strict reproducibility.
+    #
+    # Common pitfalls:
+    # - Using `latest` → non-reproducible builds.
+    # - Jumping major versions (e.g., 15 → 16) without a proper upgrade path.
+    # - Choosing `-alpine` and then missing system libs needed by extensions.
+    # --------------------------------------------------------------------------
+    image: postgres:16
+
+    # Container name — convenient stable handle for local tooling (psql, docker logs, etc.).
+    # Optional in Compose, but explicit naming avoids random suffixes.
+    container_name: postgres
+
+    # Environment — one-time bootstrap inputs consumed by the official entrypoint.
+    # IMPORTANT: These are applied ONLY on the very first initialization
+    # (i.e., when /var/lib/postgresql/data is empty). On later restarts,
+    # Postgres uses the existing data directory and ignores changes here.
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}          # Optional. Role created at first init.
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}  # REQUIRED at first init; container exits if missing.
+      POSTGRES_DB: ${POSTGRES_DB}              # Optional. Database created ONLY on first init.
+                                               # After the data dir exists, this has no effect.
+
+    # Here is a quick breakdown on how ports work in Docker Compose files:
+    #
+    # By "port" we mean the network socket number used to send/receive traffic.
+    #
+    # For a container to have a port published, we define it as two parts:
+    #   host_port:container_port
+    #
+    # We use a TCP connection, which means:
+    # - We write host_port:container_port in the Compose file.
+    # - Under TCP, the host and container create a reliable, ordered byte-stream connection.
+    #
+    # host_port = the port number exposed on the host machine (e.g., localhost:5432)
+    #             that clients outside Docker connect to (psql, Power BI, etc.).
+    # container_port = the port inside the container where the service
+    #                  (e.g., Postgres) is actually listening.
+    #
+    # This means that even if we change the host_port (e.g., 15432:5432),
+    # the container_port would still be 5432 (Postgres keeps listening
+    # on its normal internal port).
+    ports:
+      - "5432:5432"
+    # --------------------------------------------------------------------------
+    # Volumes — quick breakdown (how persistence & init scripts work)
+    #
+    # By "volume" we mean a filesystem mount into the container. Two common types:
+    #  - Bind mount: maps a *host path* → *container path* (good for scripts/config).
+    #  - Named volume: managed by Docker; stores data outside the container lifecycle.
+    #
+    # Why we need them for Postgres:
+    #  1) To run one-time initialization scripts on the *first* database bootstrap.
+    #  2) To persist the actual database cluster files across rebuilds/restarts.
+    #
+    # Execution semantics for init scripts:
+    #  - Files under /docker-entrypoint-initdb.d are executed **once** by the
+    #    official Postgres entrypoint, **only if** /var/lib/postgresql/data is empty.
+    #  - Supported extensions: *.sql, *.sql.gz, *.sh (executed in lexical order).
+    #  - Typical uses: CREATE SCHEMA/ROLE/EXTENSION, seed data, GRANTs.
+    #  - Not related to networking/ports; purely bootstrap-time database setup.
+    #
+    # Persistence semantics for data:
+    #  - /var/lib/postgresql/data holds the *cluster* (tables, indexes, catalogs,
+    #    configuration files, transaction logs in pg_wal, etc.).
+    #  - Mapping this to a **named volume** makes data survive container removal
+    #    and image upgrades; this stores DATA, not the image itself.
+    #  - If this directory already contains a cluster, init scripts will NOT run.
+    # --------------------------------------------------------------------------
+    volumes:
+      # Bind mount (host → container) for one-time init scripts.
+      - ./postgres/init:/docker-entrypoint-initdb.d
+
+      # Named volume (docker-managed) for the Postgres data directory (cluster).
+      - pgdata:/var/lib/postgresql/data
+      # All cluster data lives here (tables, indexes, catalogs, WAL).
+      # Container can be recreated; data persists in 'pgdata'.
+
+    # --------------------------------------------------------------------------
+    # Healthcheck — quick breakdown (how Compose knows Postgres is ready)
+    #
+    # Purpose:
+    #  - A healthcheck marks the service "healthy" only when the database is
+    #    actually accepting connections. Dependents can wait on this.
+    #
+    # Tool used: pg_isready
+    #  - Probes a Postgres server without authenticating; checks the accept state.
+    #  - Exit codes:
+    #      0 → server is accepting connections (ready)
+    #      1/2 → server is not accepting connections (not ready yet)
+    #      3 → no attempt made (bad args/config)
+    #
+    # Flags used:
+    #  - -U <user>    → sets the PostgreSQL user for the connection attempt.
+    #                   Being explicit avoids defaulting to the container OS user.
+    #  - -d <dbname>  → targets a specific database; fails if it does not exist,
+    #                   so this checks "server up AND target DB created".
+    #
+    # Timing knobs:
+    #  - interval: how often to run the probe.
+    #  - timeout: how long to wait before considering the probe failed.
+    #  - retries: how many consecutive failures before marking "unhealthy".
+    #
+    # Using with dependents:
+    #  - In other services, gate startup with:
+    #      depends_on:
+    #        postgres:
+    #          condition: service_healthy
+    #    This avoids race conditions where apps try to connect before Postgres is ready.
+    # --------------------------------------------------------------------------
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]  # 0=ready; 1/2=not ready; 3=bad args
+      interval: 5s     # run every 5 seconds
+      timeout: 3s      # each probe has up to 3 seconds to succeed
+      retries: 30      # mark unhealthy after 30 consecutive failures
+
+
+
+  mock-api:
+    # --------------------------------------------------------------------------
+    # Build — quick breakdown (how the image for this service is created)
+    #
+    # - Using a local build context (`./mock_api`) means Docker will build an image
+    #   from the Dockerfile found there (or the one specified via "dockerfile:").
+    # - Benefit: you control runtime deps, Python libs, and add a small /health route.
+    # - Rebuild when code or requirements change: `docker compose build mock-api`.
+    # --------------------------------------------------------------------------
+    build: ./mock_api
+
+    # Explicit container name for convenience (logs, exec). Optional.
+    container_name: mock-api
+
+    # --------------------------------------------------------------------------
+    # Environment — variable substitution (compose-time) vs runtime injection
+    #
+    # Docker Compose supports *variable substitution* when parsing this file.
+    # Placeholders like `${VAR}` are resolved from your host environment
+    # (`.env` file or shell) *before the container starts*.
+    #
+    # Operator rules:
+    # - `${VAR:?msg}` → REQUIRED. If VAR is unset/empty at compose-time, Compose
+    #   aborts with `msg`. Use for hard requirements (e.g. API credentials).
+    #
+    # - `${VAR:-default}` → OPTIONAL with default. If VAR is unset/empty,
+    #   substitute `default`. Use for tunables (e.g. rate limits, time zone).
+    #
+    # Notes:
+    # - The `:?` vs `:-` operator defines whether a missing/empty variable causes
+    #   an error or gets a fallback.
+    # - Substitution happens once, at compose-time. After that, only plain
+    #   key/value pairs are passed to the container.
+    # - Inside the container, these appear as normal environment variables
+    #   (e.g. `API_KEY=supersecret`).
+    # - All values are strings; your app must parse numbers explicitly.
+    # --------------------------------------------------------------------------
+    environment:
+      API_KEY: ${API_KEY:?API_KEY must be set}                   # Required: fail fast if missing. Must be provided in .env/shell.
+      API_RATE_LIMIT_PER_MIN: ${API_RATE_LIMIT_PER_MIN:-300}     # Optional: defaults to 300 req/min if not set.
+      TZ: ${TZ:-UTC}                                             # Optional: defaults to UTC for consistency across containers.
+
+
+    # --------------------------------------------------------------------------
+    # Ports — quick breakdown (host_port:container_port; TCP by default)
+    #
+    # - Ports in Docker Compose are published over TCP by default, meaning a
+    #   reliable connection is established between host and container.
+    #
+    # - Syntax: "host_port:container_port"
+    #   host_port      = the port number exposed on the host machine
+    #                    (e.g. localhost:5432) that outside clients connect to
+    #                    (psql, browser, Power BI, etc.).
+    #   container_port = the port inside the container where the service is
+    #                    actually listening (e.g. Postgres on 5432, Flask on 8000).
+    #
+    # - Example here: "8000:8000" maps host port 8000 → container port 8000.
+    #   So http://localhost:8000 on the host is forwarded to port 8000 inside
+    #   the container.
+    #
+    # - Services on the same Docker Compose network can skip the published port
+    #   and reach each other directly (e.g. http://mock-api:8000).
+    #
+    # - If the host port is already in use, change the left side
+    #   (e.g. "18000:8000").
+    # --------------------------------------------------------------------------
+    ports:
+      - "8000:8000"
+
+
+    # --------------------------------------------------------------------------
+    # Healthcheck — quick breakdown (HTTP probe from inside the container)
+    #
+    # Purpose:
+    #  - Confirms the mock-api service is alive and responding over HTTP.
+    #  - Lets Compose mark the container "healthy" only when the endpoint works.
+    #
+    # Command explained:
+    #  - `curl -fsS http://localhost:8000/health`
+    #      * Runs inside the container’s network namespace.
+    #        → `localhost` means the container itself, not the host.
+    #      * `-f` → fail on HTTP status ≥ 400 (treats errors as failures).
+    #      * `-sS` → silent mode but still prints errors (clean logs).
+    #  - `|| exit 1` → if curl fails, force a non-zero exit so Docker knows probe failed.
+    #
+    # Exit codes:
+    #  - 0 → probe succeeded (service healthy).
+    #  - non-zero → probe failed. After N retries (see below), service is "unhealthy".
+    #
+    # Timing knobs:
+    #  - interval: how often the probe runs.
+    #  - timeout: how long each probe can take before being treated as failed.
+    #  - retries: how many consecutive failures before the service is "unhealthy".
+    #
+    # Prereq:
+    #  - Image must include `curl`. If not, install it (apk add curl / apt-get install curl)
+    #    or swap for an alternative (e.g. `wget -qO-`, Python requests one-liner).
+    #
+    # Liveness vs readiness:
+    #  - Readiness: ensures the service is ready to handle traffic (HTTP 200).
+    #  - Liveness: also doubles as a liveness check—if the endpoint stops responding,
+    #    health flips to "unhealthy".
+    #
+    # Using with dependents:
+    #  - Other services can safely wait for mock-api with:
+    #      depends_on:
+    #        mock-api:
+    #          condition: service_healthy
+    #    This prevents race conditions where dependents call mock-api too early.
+    # --------------------------------------------------------------------------
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:8000/health || exit 1"]
+      interval: 10s   # run every 10 seconds
+      timeout: 3s     # each probe must complete within 3 seconds
+      retries: 5      # mark unhealthy after 5 consecutive failures
+
+
+    # --------------------------------------------------------------------------
+    # Startup ordering — quick breakdown (waiting for Postgres)
+    #
+    # - `depends_on` with `condition: service_healthy` makes Compose wait until
+    #   the postgres service’s healthcheck reports "healthy" before starting
+    #   mock-api. This avoids race conditions in app start-up code that needs DB.
+    # - Your app should still implement retry/backoff on DB connections at startup,
+    #   because this only guarantees initial health, not continuous availability.
+    # --------------------------------------------------------------------------
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+# ------------------------------------------------------------------------------
+# Airflow — service wiring, runtime config, and boot sequence
+#
+# Image vs container vs build:
+# - **Image** = a blueprint (snapshot of a filesystem + metadata). Think of it
+#   like a disk image: OS, Python, Airflow binaries, libraries, entrypoint, env.
+# - **Container** = a running instance of that image. It’s the actual process
+#   running in isolated namespaces, using the image as its root filesystem.
+#
+# In this config:
+# - `image: airflow-local` → names the blueprint (the built Airflow image).
+# - `container_name: airflow` → names the running instance (what you see with
+#   `docker ps`, `docker logs airflow`, `docker exec -it airflow sh`).
+#
+#
+# - **Build** = the recipe used to create an image locally from a Dockerfile
+#   (plus context directory, COPY, RUN, etc.). Think of it as compiling a new
+#   image. Once built, the result can be tagged (e.g., airflow-local) and reused.
+#   You use `build:` when you have your own Dockerfile; you use `image:` when
+#   you want to pull a prebuilt one or tag your build result.
+#
+# In this config:
+# - `build: ./airflow` → points to the Dockerfile/context used to build a local image.
+# - `image: airflow-local` → names the blueprint (the built Airflow image).
+# - `container_name: airflow` → names the running instance (what you see with
+#   `docker ps`, `docker logs airflow`, `docker exec -it airflow sh`).
+# -------------------------------------------------------------------------
+# Working directory:
+# - `working_dir: /workspace` → defines the **current working directory (CWD)**
+#   inside the container when the entrypoint/command runs.
+#
+#   By “current working directory” we mean: the folder the process *starts in*
+#   when it begins executing. It’s the same idea as opening a terminal and
+#   typing `pwd` (print working directory). Whatever `pwd` prints is where you
+#   are “standing” in the filesystem. It doesn’t say where files live on disk,
+#   only the *starting location* for relative paths. So yes — it defines where
+#   the process starts, but not where the code or data is physically stored.
+#
+#   Important distinction:
+#   - `working_dir` does not create storage or a volume by itself.
+#   - `volumes:` is what actually mounts host folders into the container.
+#   - When you combine them (e.g. mount `./` to `/workspace` *and* set
+#     `working_dir: /workspace`), the container process will start inside that
+#     mounted project folder. This is why people often pair them.
+# (In ./:/workspace, the colon (:) is the separator in the short bind-mount syntax: host_path : container_path [:options].)
+# Example with repo mount:
+#   volumes:
+#     - ./:/workspace
+#   working_dir: /workspace
+#   command: bash -lc "ls dags"
+#
+# → At runtime:
+#   * `/workspace` inside the container maps to the host project root (`./`).
+#   * Because working_dir=/workspace, the shell starts in that folder.
+#   * `ls dags` is resolved as `/workspace/dags`.
+#
+# Purpose of `command` here:
+# - The `command` overrides the container’s default entrypoint command.
+# - In this example, it runs a shell (`bash -lc`) and asks it to execute
+#   `ls dags`. That is just a demonstration — it shows that:
+#     1) the repo is mounted to /workspace, and
+#     2) relative paths (`dags`) are resolved against working_dir (/workspace).
+#
+# If you omit working_dir, the default CWD is `/` (the container root). Then
+# `ls dags` would fail unless you wrote `ls /workspace/dags`.
+#
+# Reminder: what is a shell?
+# - A shell is the program that interprets text commands (bash, zsh, sh).
+#   When you run `bash -lc "ls dags"`, you’re starting a shell inside the
+#   container and telling it to execute the `ls dags` command.
+#
+# Not the same as logs/plugins volumes:
+# - Volumes like ./airflow/logs:/opt/airflow/logs are **storage mounts** that
+#   persist data across runs. `working_dir` only affects where commands/scripts
+#   *run from* — it doesn’t handle persistence.
+#
+# One-liner definition:
+#   `working_dir` = “Where inside the container processes start and relative
+#   paths are resolved.”
+# ------------------------------------------------------------------------------
+
+  airflow:
+    build: ./airflow
+    image: airflow-local
+    container_name: airflow
+    working_dir: /workspace
+
+
+    # ----------------------------------------------------------------------------
+    # Environment — Airflow config, connection strings, cross-service URLs
+    # Format: KEY: value  # primary comment
+    #         # extra detail / caveats
+    # ----------------------------------------------------------------------------
+    environment:
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"                      # Disable bundled tutorial/example DAGs.
+      # Keeps the UI clean; avoids scheduler scanning unused example DAGs.
+
+      AIRFLOW__CORE__EXECUTOR: "LocalExecutor"                   # Parallelism via local processes on this container.
+      # For distributed workers use CeleryExecutor + a broker (Redis/RabbitMQ) and separate scheduler/webserver/worker pods.
+
+      AIRFLOW__WEBSERVER__EXPOSE_CONFIG: "True"                  # Show effective Airflow config in the web UI.
+      # Useful in development; turn off in production to reduce config disclosure.
+
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: >-                    # Airflow metadata DB URI.
+        postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      # Uses psycopg2 driver; host is the Compose service DNS name `postgres`. Ensure the DB exists and is reachable.
+
+      DBT_PROFILES_DIR: /opt/airflow/.dbt                        # Path where dbt looks for profiles.yml.
+      # This must match the mount in volumes; lets dbt Operators find credentials/config without inline secrets.
+
+      TZ: ${TZ:-UTC}                                             # Container timezone (string).
+      # Defaults to UTC; install tzdata in the image if you set a non-UTC zone to get correct time rules.
+
+      AIRFLOW_CONN_POSTGRES_DEFAULT: >-
+        postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      # This environment variable defines an Airflow Connection.
+      # Typically, AIRFLOW_CONN_<CONN_ID> is used to set up a connection Airflow operators/hooks can reuse.
+      # But AIRFLOW__DATABASE__SQL_ALCHEMY_CONN is separate — that one configures Airflow’s metadata DB.
+      # Here, POSTGRES_DEFAULT → creates/overrides conn_id 'postgres_default'.
+      # This connection is PostgreSQL + psycopg2 driver, host=postgres (Compose service), port=5432, using provided user/db.
+      # Used by PostgresOperator / PostgresHook when conn_id='postgres_default'.
+
+
+      API_BASE_URL: http://mock-api:8000                         # Service URL for the mock API (in-cluster name resolution).
+      # Use the service name, not localhost; from Airflow’s network namespace, localhost would point to the Airflow container.
+
+      API_KEY: ${API_KEY:?API_KEY must be set}                   # Required secret for calling the mock API.
+      # Compose-time guard (`:?`); consider Compose secrets or a mounted file in production instead of plain env.
+
+      POSTGRES_USER: ${POSTGRES_USER}                            # Expose DB user to tasks/operators that read env directly.
+      # Convenience for PythonOperators/BashOperators; keep consistent with the metadata DB creds or scope to app DB only.
+
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}                    # Expose DB password to tasks/operators that read env directly.
+      # Treat as sensitive; avoid logging. Prefer Airflow Connections or Secrets Backends in production.
+
+      POSTGRES_DB: ${POSTGRES_DB}                                # Expose target database name for tasks/operators.
+      # Useful for templated scripts (`psql -d ${POSTGRES_DB}`); ensure the DB exists before dependent tasks run.
+
+
+    # ----------------------------------------------------------------------------
+    # Process model — how this container starts Airflow
+    #
+    # entrypoint: ["/bin/bash", "-lc"]
+    # - `/bin/bash` → run the Bash shell program inside the container.
+    # - `-l`        → make it a "login shell", so it loads profile scripts.
+    # - `-c`        → tell Bash to execute the following string as a command.
+    # - Written as a YAML list so Docker knows it’s the JSON-array form of entrypoint.
+    #   (clearer than a single string; avoids issues with spaces/quoting).
+    #
+    # Command runs the boot sequence step by step:
+    # 1) `airflow db init` → initialize or upgrade the metadata DB.
+    #    - *Idempotent* means you can run it many times and get the same end state
+    #      (if DB already initialized, it just ensures schema is up to date).
+    # 2) `airflow users create … || true` → create an admin user.
+    #    - `|| true` makes “user already exists” non-fatal and continues execution.
+    # 3) Reset the default connection:
+    #    - `airflow connections delete postgres_default || true`
+    #      → remove built-in `postgres_default`, ignore if it doesn’t exist.
+    #    - `airflow connections add postgres_default --conn-uri "..."`
+    #      → add a new `postgres_default` pointing to our Postgres service.
+    # 4) `airflow webserver & airflow scheduler`
+    #    - start the webserver in the background (&).
+    #    - start the scheduler in the foreground. Scheduler keeps the container alive.
+    #
+    # Typically you’d run webserver and scheduler as separate containers, or under a
+    # process manager. Here they’re combined for dev simplicity.
+    #
+    # Note: admin creds are dev-only. In production rotate them, avoid plain envs,
+    # and consider moving connection setup into init scripts or plugins.
+    # ----------------------------------------------------------------------------
+    entrypoint: ["/bin/bash", "-lc"]
+    command: |
+      airflow db init && \
+      airflow users create --role Admin --username admin --password admin --firstname Admin --lastname User --email admin@example.com || true && \
+      airflow connections delete postgres_default || true && \
+      airflow connections add postgres_default --conn-uri "postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}" && \
+      airflow webserver & airflow scheduler
+
+    # ----------------------------------------------------------------------------
+    # Ports — expose Airflow UI to the outside (TCP by default).
+    #
+    # Format is host_port:container_port.
+    # - host_port → port on your machine (the host running Docker).
+    # - container_port → port inside the container (where the service listens).
+    #
+    # Here "8080:8080":
+    # - left side 8080 = port on the host, so http://localhost:8080 opens the UI.
+    # - right side 8080 = port inside the Airflow container where the webserver runs.
+    #
+    # If host port 8080 is already taken, change only the left side
+    # (e.g. "18080:8080" → then access at http://localhost:18080).
+    #
+    # Important: other containers in the same Compose network should connect to
+    # http://airflow:8080 (using service name) rather than localhost.
+    # ----------------------------------------------------------------------------
+    ports:
+      - "8080:8080"
+
+    # ----------------------------------------------------------------------------
+    # Volumes — map host directories into the container.
+    #
+    # We use volumes to add storage from the host into the container. In practice,
+    # this means mounting a folder path from the project (host_path) onto a folder
+    # inside the container (container_path).
+    #
+    # Syntax: host_path:container_path
+    # - host_path      → location on your machine (project directory).
+    # - container_path → location inside the container.
+    #
+    # Example: ./airflow/dags:/opt/airflow/dags
+    # - host_path = ./airflow/dags (folder in the project repo).
+    # - container_path = /opt/airflow/dags (folder inside the container).
+    #
+    # Note: `/opt` is a standard Linux convention meaning “optional software.”
+    # Many container images (like Airflow) install their runtime under /opt.
+    #
+    # Airflow needs several mounts because it does multiple things:
+    # - /opt/airflow/dags    → DAG files; live-edit and scheduler/webserver reloads them.
+    # - /opt/airflow/logs    → task logs; persist across container restarts.
+    # - /opt/airflow/plugins → custom operators/hooks/sensors to extend Airflow.
+    # - /usr/app             → dbt project directory (operators that run dbt use this).
+    # - /opt/airflow/.dbt    → dbt profiles directory (matches DBT_PROFILES_DIR).
+    # - /workspace           → repo root; useful for scripts/config referenced by Airflow.
+    #
+    # Typically you’d separate concerns:
+    # - DAGs/logs/plugins → Airflow-specific lifecycle.
+    # - dbt project/profiles → dbt-related config.
+    # - workspace → full repo context for auxiliary tasks.
+    #
+    # Caution:
+    # - Bind mounts reflect host file permissions. Ensure the Airflow user in the
+    #   container can read/write these paths.
+    # - In CI/CD, consider named volumes (especially for logs) to avoid permission issues.
+    # ----------------------------------------------------------------------------
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./dbt:/usr/app
+      - ./dbt/profiles:/opt/airflow/.dbt
+      - ./:/workspace   # repo root; handy for auxiliary scripts/config
+      - /var/run/docker.sock:/var/run/docker.sock   # <-- add this
+
+
+    # ----------------------------------------------------------------------------
+    # Service ordering — wait for dependencies to be healthy
+    #
+    # - Postgres: ensures metadata DB is accepting connections before Airflow init.
+    # - mock-api: ensures the HTTP endpoint is up before DAGs/operators call it.
+    #
+    # Note:
+    # - `depends_on: condition: service_healthy` uses the *other service's*
+    #   healthcheck; ensure those are defined (you did for postgres/mock-api).
+    # ----------------------------------------------------------------------------
+    depends_on:
+      postgres:
+        condition: service_healthy
+      mock-api:
+        condition: service_healthy
+
+
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-postgres:1.8.latest
+    # Image — the container filesystem + startup program we run.
+    # Comes from GitHub Container Registry (ghcr.io/dbt-labs).
+    # It’s the dbt-core runtime bundled with the Postgres adapter.
+    # Tag `1.8.latest` pins major version (dbt-core 1.8.x). Important for reproducibility:
+    # dbt project syntax and features can change between versions.
+
+    container_name: dbt
+    # Explicit container name = "dbt".
+    # Normally Compose generates one (e.g., <project>_dbt_1), but we hardcode for consistency.
+
+    working_dir: /usr/app
+    # Sets the working directory inside the container.
+    # When you run `docker exec dbt ...`, commands will start from /usr/app.
+    # dbt expects to be run from the project root (where models/, seeds/, etc. live).
+    # Without this, dbt may fail to locate models or relative paths.
+    # Important: working_dir doesn’t “append to” a volume. Instead:
+    # - The volume mapping ./dbt:/usr/app ensures that /usr/app inside the container
+    #   points to the dbt project folder on your host.
+    # - Then working_dir=/usr/app makes that folder the default CWD.
+    # So together, the volume provides the files, and working_dir sets the location
+    # where dbt commands will execute against those files.
+
+    environment:
+      DBT_PROFILES_DIR: /root/.dbt
+      # Env var that tells dbt where to find profiles.yml (connection configs).
+      # Default = ~/.dbt. Here we override to /root/.dbt.
+      # To your question: this path is not “appended” automatically.
+      # Instead, we explicitly MOUNT ./dbt/profiles into /root/.dbt (see volumes).
+      # DBT_PROFILES_DIR just tells dbt: “look here for profiles.yml.”
+
+      TZ: ${TZ:-UTC}
+      # Timezone inside the container. Default to UTC if not set in .env.
+      # Useful for consistent timestamps in logs/runs across environments.
+
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      # Pass Postgres credentials from .env file into container.
+      # dbt doesn’t read these directly; instead, profiles.yml references them
+      # via env_var('POSTGRES_USER'), etc., so secrets aren’t hardcoded.
+      # To your comment: yes, that’s the power of dbt —
+      # once you provide connection details for Postgres in profiles.yml
+      # (and optionally link them to env vars), dbt takes care of connecting,
+      # running SQL, building models, and managing the schema automatically.
+
+    volumes:
+      - ./dbt:/usr/app
+      # host_path:container_path
+      # - host_path = ./dbt (dbt project folder on your machine).
+      # - container_path = /usr/app (inside container).
+      # Effect: /usr/app inside the container shows the files from ./dbt on host.
+      # Because working_dir=/usr/app, dbt starts directly in your project root.
+      # So edits you make to ./dbt locally are reflected live inside container.
+
+      - ./dbt/profiles:/root/.dbt
+      # Mounts the host ./dbt/profiles folder into /root/.dbt inside container.
+      # DBT_PROFILES_DIR points dbt to this location.
+      # This ensures dbt sees profiles.yml with the right connection info.
+      # Answer to your question above: this is a mount, not an append. The path
+      # in DBT_PROFILES_DIR must exist in the container, so we mount it from host.
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      # Compose waits until Postgres is “healthy” (via pg_isready check).
+      # Prevents dbt from failing with “connection refused” if DB is still starting.
+      # Important for reproducibility in dev.
+
+    entrypoint: ["tail", "-f", "/dev/null"]
+    # Entry point override.
+    # Normally, a dbt container would exit after finishing its command.
+    # Here we override with `tail -f /dev/null`:
+    #   → tail reads from /dev/null forever, so process never ends.
+    #   → keeps the container alive in idle mode.
+    #   → lets you exec in (`docker exec -it dbt bash`) and run dbt interactively
+    #     (`dbt run`, `dbt test`, `dbt seed`, etc.).
+    #
+    # To your note: an alternative entrypoint is ["/bin/bash", "-lc"].
+    # - `/bin/bash` → run Bash shell inside container.
+    # - `-l`        → make it a login shell (load profile scripts).
+    # - `-c`        → execute the following string as a command.
+    # - Using YAML list form avoids quoting problems and is clearer than a single string.
+    # With this style, you could set command: dbt deps && dbt run && dbt test
+    # to run dbt automatically when container starts.
+    #
+    # Dev pattern = idle container (tail -f /dev/null).
+    # Prod pattern = scripted container (bash -lc "dbt run && dbt test").
+
+
+
+volumes:
+  pgdata: {}
+  # Named volume declaration (Docker-managed persistent storage for PGDATA).
+  # Defined at the same level as services, so it’s available to any service that mounts it.
+  # This makes Postgres data live outside the container’s writable layer:
+  # - Data survives `docker compose up` (container recreation).
+  # - Data survives `docker compose down` (container removal).
+  # - Data is only lost if you explicitly run `docker compose down -v` or `docker volume rm`.
+  # Inside Postgres, all tables, schemas, and indexes are stored as files in PGDATA,
+  # which is mounted to this named volume for durability.

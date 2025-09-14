@@ -1,0 +1,12 @@
+api_bi_profile:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: postgres
+      user: "{{ env_var('POSTGRES_USER') }}"
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"
+      port: 5432
+      dbname: "{{ env_var('POSTGRES_DB') }}"
+      schema: public
+      threads: 4
