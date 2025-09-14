@@ -77,6 +77,5 @@ RUN export AIRFLOW_CONSTRAINTS_URL="https://raw.githubusercontent.com/apache/air
 # For local dev convenience you may run as root to dodge permission issues on
 # bind mounts (dags/, logs/, plugins/). For production, prefer the "airflow" user
 # and fix ownership on mounted paths (e.g., chown/chmod) for least privilege.
-
-USER root
+USER airflow
 #and why do we change the user back to this here, all the way at the end. Is it becuas ehte build is done and we only need to swtich to the airflow user during the image build, but now the image build is done we can go back to the user root
