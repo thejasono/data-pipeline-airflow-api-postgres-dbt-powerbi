@@ -612,25 +612,10 @@ services:
       # Prevents dbt from failing with “connection refused” if DB is still starting.
       # Important for reproducibility in dev.
 
-    entrypoint: ["tail", "-f", "/dev/null"]
-    # Entry point override.
-    # Normally, a dbt container would exit after finishing its command.
-    # Here we override with `tail -f /dev/null`:
-    #   → tail reads from /dev/null forever, so process never ends.
-    #   → keeps the container alive in idle mode.
-    #   → lets you exec in (`docker exec -it dbt bash`) and run dbt interactively
-    #     (`dbt run`, `dbt test`, `dbt seed`, etc.).
-    #
-    # To your note: an alternative entrypoint is ["/bin/bash", "-lc"].
-    # - `/bin/bash` → run Bash shell inside container.
-    # - `-l`        → make it a login shell (load profile scripts).
-    # - `-c`        → execute the following string as a command.
-    # - Using YAML list form avoids quoting problems and is clearer than a single string.
-    # With this style, you could set command: dbt deps && dbt run && dbt test
-    # to run dbt automatically when container starts.
-    #
-    # Dev pattern = idle container (tail -f /dev/null).
-    # Prod pattern = scripted container (bash -lc "dbt run && dbt test").
+    entrypoint: ["/bin/bash", "-lc", "dbt deps && dbt run"]
+    # Automatically install dependencies and run the project when the
+    # container starts. The list-form keeps quoting rules simple while
+    # `-l` ensures the shell loads expected profile scripts.
 
 
 
