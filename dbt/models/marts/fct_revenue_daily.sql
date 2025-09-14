@@ -9,3 +9,4 @@ select
   count(*) as orders
 from p
 group by 1,2,3
+
