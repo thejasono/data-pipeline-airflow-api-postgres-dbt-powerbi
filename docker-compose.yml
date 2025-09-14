@@ -451,7 +451,7 @@ services:
     # Note: admin creds are dev-only. In production rotate them, avoid plain envs,
     # and consider moving connection setup into init scripts or plugins.
     # ----------------------------------------------------------------------------
-    entrypoint: ["/bin/bash", "-lc"]
+    # entrypoint: ["/bin/bash", "-lc"]
     command: |
       airflow db init && \
       airflow users create --role Admin --username admin --password admin --firstname Admin --lastname User --email admin@example.com || true && \
