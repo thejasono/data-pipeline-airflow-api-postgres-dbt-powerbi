@@ -6,6 +6,7 @@ models:
         tests: [not_null, unique]
       - name: country
         tests: [not_null]
+
   - name: stg_payments
     columns:
       - name: payment_id
@@ -14,6 +15,7 @@ models:
         tests:
           - accepted_values:
               values: [succeeded, failed, refunded]
+
   - name: stg_sessions
     columns:
       - name: session_id
@@ -22,6 +24,7 @@ models:
         tests:
           - accepted_values:
               values: [google, direct, facebook, linkedin, newsletter, referral, bing]
+              
   - name: fct_revenue_daily
     columns:
       - name: order_day
