@@ -1,11 +1,11 @@
 -- =============================================================================
--- Schema layout for ELT pipeline (executed at cluster bootstrap by Postgres' 
+-- Schema layout for ELT pipeline (executed at cluster bootstrap by Postgres'
 -- entrypoint when placed under /docker-entrypoint-initdb.d/ in the image/container).
 -- Purpose of each schema:
---   raw       → immutable(ish) landings from source systems; minimal shaping only.
---   staging   → cleaned/validated/intermediate transforms ready for modeling.
---   analytics → star/snowflake marts, semantic views, and BI-serving tables.
--- Power BI (read-only) should query *analytics* only.
+--   raw             → immutable(ish) landings from source systems; minimal shaping only.
+--   public_staging  → cleaned/validated/intermediate transforms ready for modeling.
+--   public_analytics → star/snowflake marts, semantic views, and BI-serving tables.
+-- Power BI (read-only) should query *public_analytics* only.
 -- =============================================================================
 
 CREATE SCHEMA IF NOT EXISTS raw;
@@ -15,15 +15,15 @@ CREATE SCHEMA IF NOT EXISTS raw;
 -- - Enables reproducibility and late re-processing (dbt models can always
 --   be rebuilt from raw). Acts as your single source of truth snapshot.
 
-CREATE SCHEMA IF NOT EXISTS staging;
--- staging: "refinery" zone for deterministic cleaning and standardization.
+CREATE SCHEMA IF NOT EXISTS public_staging;
+-- public_staging: "refinery" zone for deterministic cleaning and standardization.
 -- - Apply type coercions, denormalization, de-duplication, surrogate keys,
 --   basic conforming of dimensions, and integrity checks.
 -- - Tables here are transient/derivative; dbt models typically materialize as
---   views or ephemeral tables that feed analytics.
+--   views or ephemeral tables that feed public_analytics.
 
-CREATE SCHEMA IF NOT EXISTS analytics;
--- analytics: "presentation" / semantic layer for consumers (BI, notebooks).
+CREATE SCHEMA IF NOT EXISTS public_analytics;
+-- public_analytics: "presentation" / semantic layer for consumers (BI, notebooks).
 -- - Star/snowflake schemas (fact_* and dim_*), or curated wide tables.
 -- - Column names and types are business-friendly and stable.
 -- - Only this schema will be granted to the bi_read role for least-privilege.
@@ -79,7 +79,7 @@ CREATE INDEX IF NOT EXISTS idx_raw_sessions_start ON raw.sessions(session_start)
 
 -- Notes:
 -- - Foreign keys are intentionally not enforced in raw to avoid ingestion failure
---   due to upstream quality issues; enforce referential integrity in staging.
+--   due to upstream quality issues; enforce referential integrity in public_staging.
 -- - Downstream (dbt) models should:
---     * stage_*: coerce types, dedupe, apply FK checks
---     * dim_*/fact_* in analytics: expose curated entities/measures for BI
+--     * stage_* (public_staging): coerce types, dedupe, apply FK checks
+--     * dim_*/fact_* in public_analytics: expose curated entities/measures for BI

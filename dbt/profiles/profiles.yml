@@ -11,15 +11,13 @@ api_bi_profile:
       password: "{{ env_var('POSTGRES_PASSWORD') }}"  # Password from env var
       port: 5432  # Database port
       dbname: "{{ env_var('POSTGRES_DB') }}"  # Database name
-      schema: ""  # Leave blank so dbt creates top-level `staging` and `analytics` schemas.
-                  # If you set this to `public` (or another name), dbt prefixes every model
-                  # schema (e.g. `public_staging`, `public_analytics`).
-                  #
-                  # Default PostgreSQL schema ("public")
-                  # - PostgreSQL uses a schema named `public` by default for objects with
-                  #   no explicit schema.
-                  # - dbt doesn’t drop or rename `public`; with `schema` left blank, dbt simply
-                  #   stops writing models there.
-                  # - `public` can still host other tables (e.g. metadata like `ab_permission`,
-                  #   `ab_permission_view`, etc.).
+      schema: "public"  # Base schema name; dbt appends folder-specific suffixes (staging →
+                        # `public_staging`, marts → `public_analytics`).
+                        #
+                        # Why set a base schema?
+                        # - Keeps all dbt-created objects grouped under a consistent prefix.
+                        # - Avoids cluttering the top-level namespace with plain `staging` /
+                        #   `analytics` schemas.
+                        # - Works with the initialization SQL, which now creates
+                        #   `public_staging` and `public_analytics` ahead of dbt runs.
       threads: 4  # Number of threads dbt uses
