@@ -1,0 +1,66 @@
+[2025-09-15T20:30:14.228+0200] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-09-15T20:30:14.277+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_api_to_bi.dbt_build scheduled__2025-09-15T18:15:00+00:00 [queued]>
+[2025-09-15T20:30:14.288+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_api_to_bi.dbt_build scheduled__2025-09-15T18:15:00+00:00 [queued]>
+[2025-09-15T20:30:14.288+0200] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-09-15T20:30:14.302+0200] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_build> on 2025-09-15 18:15:00+00:00
+[2025-09-15T20:30:14.315+0200] {standard_task_runner.py:64} INFO - Started process 740 to run task
+[2025-09-15T20:30:14.320+0200] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'etl_api_to_bi', 'dbt_build', 'scheduled__2025-09-15T18:15:00+00:00', '--job-id', '22', '--raw', '--subdir', 'DAGS_FOLDER/etl_api_to_bi.py', '--cfg-path', '/tmp/tmp6677ksb5']
+[2025-09-15T20:30:14.324+0200] {standard_task_runner.py:91} INFO - Job 22: Subtask dbt_build
+[2025-09-15T20:30:14.438+0200] {task_command.py:426} INFO - Running <TaskInstance: etl_api_to_bi.dbt_build scheduled__2025-09-15T18:15:00+00:00 [running]> on host f51a750ef2c3
+[2025-09-15T20:30:14.853+0200] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data' AIRFLOW_CTX_DAG_ID='etl_api_to_bi' AIRFLOW_CTX_TASK_ID='dbt_build' AIRFLOW_CTX_EXECUTION_DATE='2025-09-15T18:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-15T18:15:00+00:00'
+[2025-09-15T20:30:14.855+0200] {taskinstance.py:430} INFO - ::endgroup::
+[2025-09-15T20:30:14.866+0200] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-09-15T20:30:14.867+0200] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', "docker exec dbt bash -lc 'cd /usr/app && dbt build --fail-fast --profiles-dir /root/.dbt'"]
+[2025-09-15T20:30:14.880+0200] {subprocess.py:86} INFO - Output:
+[2025-09-15T20:30:16.724+0200] {subprocess.py:93} INFO - [0m18:30:16  Running with dbt=1.8.3
+[2025-09-15T20:30:17.049+0200] {subprocess.py:93} INFO - [0m18:30:17  Registered adapter: postgres=1.8.2
+[2025-09-15T20:30:18.736+0200] {subprocess.py:93} INFO - [0m18:30:18  Found 6 models, 11 data tests, 531 macros
+[2025-09-15T20:30:18.742+0200] {subprocess.py:93} INFO - [0m18:30:18
+[2025-09-15T20:30:19.022+0200] {subprocess.py:93} INFO - [0m18:30:19  Concurrency: 4 threads (target='dev')
+[2025-09-15T20:30:19.026+0200] {subprocess.py:93} INFO - [0m18:30:19
+[2025-09-15T20:30:19.037+0200] {subprocess.py:93} INFO - [0m18:30:19  1 of 17 START sql view model public_staging.stg_customers ...................... [RUN]
+[2025-09-15T20:30:19.039+0200] {subprocess.py:93} INFO - [0m18:30:19  2 of 17 START sql view model public_staging.stg_payments ....................... [RUN]
+[2025-09-15T20:30:19.041+0200] {subprocess.py:93} INFO - [0m18:30:19  3 of 17 START sql view model public_staging.stg_sessions ....................... [RUN]
+[2025-09-15T20:30:19.387+0200] {subprocess.py:93} INFO - [0m18:30:19  1 of 17 OK created sql view model public_staging.stg_customers ................. [[32mCREATE VIEW[0m in 0.33s]
+[2025-09-15T20:30:19.402+0200] {subprocess.py:93} INFO - [0m18:30:19  3 of 17 OK created sql view model public_staging.stg_sessions .................. [[32mCREATE VIEW[0m in 0.35s]
+[2025-09-15T20:30:19.405+0200] {subprocess.py:93} INFO - [0m18:30:19  2 of 17 OK created sql view model public_staging.stg_payments .................. [[32mCREATE VIEW[0m in 0.35s]
+[2025-09-15T20:30:19.415+0200] {subprocess.py:93} INFO - [0m18:30:19  4 of 17 START test not_null_stg_customers_country .............................. [RUN]
+[2025-09-15T20:30:19.417+0200] {subprocess.py:93} INFO - [0m18:30:19  5 of 17 START test not_null_stg_customers_customer_id .......................... [RUN]
+[2025-09-15T20:30:19.428+0200] {subprocess.py:93} INFO - [0m18:30:19  6 of 17 START test unique_stg_customers_customer_id ............................ [RUN]
+[2025-09-15T20:30:19.430+0200] {subprocess.py:93} INFO - [0m18:30:19  7 of 17 START test accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing  [RUN]
+[2025-09-15T20:30:19.692+0200] {subprocess.py:93} INFO - [0m18:30:19  4 of 17 PASS not_null_stg_customers_country .................................... [[32mPASS[0m in 0.27s]
+[2025-09-15T20:30:19.693+0200] {subprocess.py:93} INFO - [0m18:30:19  6 of 17 PASS unique_stg_customers_customer_id .................................. [[32mPASS[0m in 0.26s]
+[2025-09-15T20:30:19.702+0200] {subprocess.py:93} INFO - [0m18:30:19  5 of 17 PASS not_null_stg_customers_customer_id ................................ [[32mPASS[0m in 0.28s]
+[2025-09-15T20:30:19.712+0200] {subprocess.py:93} INFO - [0m18:30:19  8 of 17 START test not_null_stg_sessions_session_id ............................ [RUN]
+[2025-09-15T20:30:19.714+0200] {subprocess.py:93} INFO - [0m18:30:19  9 of 17 START test unique_stg_sessions_session_id .............................. [RUN]
+[2025-09-15T20:30:19.730+0200] {subprocess.py:93} INFO - [0m18:30:19  10 of 17 START test accepted_values_stg_payments_status__succeeded__failed__refunded  [RUN]
+[2025-09-15T20:30:19.736+0200] {subprocess.py:93} INFO - [0m18:30:19  7 of 17 PASS accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing  [[32mPASS[0m in 0.30s]
+[2025-09-15T20:30:19.782+0200] {subprocess.py:93} INFO - [0m18:30:19  11 of 17 START test not_null_stg_payments_payment_id ........................... [RUN]
+[2025-09-15T20:30:19.881+0200] {subprocess.py:93} INFO - [0m18:30:19  8 of 17 PASS not_null_stg_sessions_session_id .................................. [[32mPASS[0m in 0.16s]
+[2025-09-15T20:30:19.892+0200] {subprocess.py:93} INFO - [0m18:30:19  12 of 17 START test unique_stg_payments_payment_id ............................. [RUN]
+[2025-09-15T20:30:19.922+0200] {subprocess.py:93} INFO - [0m18:30:19  10 of 17 PASS accepted_values_stg_payments_status__succeeded__failed__refunded . [[32mPASS[0m in 0.18s]
+[2025-09-15T20:30:19.930+0200] {subprocess.py:93} INFO - [0m18:30:19  9 of 17 PASS unique_stg_sessions_session_id .................................... [[32mPASS[0m in 0.20s]
+[2025-09-15T20:30:19.932+0200] {subprocess.py:93} INFO - [0m18:30:19  11 of 17 PASS not_null_stg_payments_payment_id ................................. [[32mPASS[0m in 0.14s]
+[2025-09-15T20:30:19.942+0200] {subprocess.py:93} INFO - [0m18:30:19  13 of 17 START sql table model public_analytics.dim_customer ................... [RUN]
+[2025-09-15T20:30:19.953+0200] {subprocess.py:93} INFO - [0m18:30:19  14 of 17 START sql table model public_analytics.fct_marketing_attribution ...... [RUN]
+[2025-09-15T20:30:20.056+0200] {subprocess.py:93} INFO - [0m18:30:20  12 of 17 PASS unique_stg_payments_payment_id ................................... [[32mPASS[0m in 0.16s]
+[2025-09-15T20:30:20.066+0200] {subprocess.py:93} INFO - [0m18:30:20  15 of 17 START sql table model public_analytics.fct_revenue_daily .............. [RUN]
+[2025-09-15T20:30:20.193+0200] {subprocess.py:93} INFO - [0m18:30:20  13 of 17 OK created sql table model public_analytics.dim_customer .............. [[32mSELECT 1000[0m in 0.24s]
+[2025-09-15T20:30:20.259+0200] {subprocess.py:93} INFO - [0m18:30:20  14 of 17 OK created sql table model public_analytics.fct_marketing_attribution . [[32mSELECT 5698[0m in 0.29s]
+[2025-09-15T20:30:20.274+0200] {subprocess.py:93} INFO - [0m18:30:20  16 of 17 START test not_null_fct_marketing_attribution_session_day ............. [RUN]
+[2025-09-15T20:30:20.316+0200] {subprocess.py:93} INFO - [0m18:30:20  15 of 17 OK created sql table model public_analytics.fct_revenue_daily ......... [[32mSELECT 4336[0m in 0.24s]
+[2025-09-15T20:30:20.325+0200] {subprocess.py:93} INFO - [0m18:30:20  17 of 17 START test not_null_fct_revenue_daily_order_day ....................... [RUN]
+[2025-09-15T20:30:20.396+0200] {subprocess.py:93} INFO - [0m18:30:20  16 of 17 PASS not_null_fct_marketing_attribution_session_day ................... [[32mPASS[0m in 0.11s]
+[2025-09-15T20:30:20.426+0200] {subprocess.py:93} INFO - [0m18:30:20  17 of 17 PASS not_null_fct_revenue_daily_order_day ............................. [[32mPASS[0m in 0.09s]
+[2025-09-15T20:30:20.466+0200] {subprocess.py:93} INFO - [0m18:30:20
+[2025-09-15T20:30:20.467+0200] {subprocess.py:93} INFO - [0m18:30:20  Finished running 3 view models, 11 data tests, 3 table models in 0 hours 0 minutes and 1.72 seconds (1.72s).
+[2025-09-15T20:30:20.559+0200] {subprocess.py:93} INFO - [0m18:30:20
+[2025-09-15T20:30:20.561+0200] {subprocess.py:93} INFO - [0m18:30:20  [32mCompleted successfully[0m
+[2025-09-15T20:30:20.563+0200] {subprocess.py:93} INFO - [0m18:30:20
+[2025-09-15T20:30:20.565+0200] {subprocess.py:93} INFO - [0m18:30:20  Done. PASS=17 WARN=0 ERROR=0 SKIP=0 TOTAL=17
+[2025-09-15T20:30:21.413+0200] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-09-15T20:30:21.414+0200] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-09-15T20:30:21.461+0200] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_api_to_bi, task_id=dbt_build, run_id=scheduled__2025-09-15T18:15:00+00:00, execution_date=20250915T181500, start_date=20250915T183014, end_date=20250915T183021
+[2025-09-15T20:30:21.499+0200] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-09-15T20:30:21.523+0200] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-09-15T20:30:21.526+0200] {local_task_job_runner.py:222} INFO - ::endgroup::
