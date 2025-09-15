@@ -1,0 +1,29 @@
+[2025-09-15T19:46:33.770+0200] {manager.py:470} INFO - Processing files using up to 2 processes at a time 
+[2025-09-15T19:46:33.772+0200] {manager.py:471} INFO - Process each file at most once every 30 seconds
+[2025-09-15T19:46:33.774+0200] {manager.py:472} INFO - Checking for new files in /opt/airflow/dags every 300 seconds
+[2025-09-15T19:46:33.775+0200] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2025-09-15T19:46:33.883+0200] {manager.py:740} INFO - There are 1 files in /opt/airflow/dags
+[2025-09-15T19:46:34.238+0200] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  ----------
+/opt/airflow/dags/etl_api_to_bi.py    172  0.09s             0           0
+================================================================================
+[2025-09-15T19:47:01.733+0200] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_api_to_bi.py                           1           0  0.87s           2025-09-15T17:46:35
+================================================================================
+[2025-09-15T19:47:29.799+0200] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/etl_api_to_bi.py                           1           0  0.33s           2025-09-15T17:47:05
+================================================================================
