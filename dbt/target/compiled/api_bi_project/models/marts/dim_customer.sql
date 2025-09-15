@@ -1,5 +1,5 @@
 with c as (
-  select * from "db"."_staging"."stg_customers"
+  select * from "db"."public_staging"."stg_customers"
 )
 select
   customer_id,

@@ -2,14 +2,14 @@
   
     
 
-  create  table "db"."_analytics"."dim_customer__dbt_tmp"
+  create  table "db"."public_analytics"."dim_customer__dbt_tmp"
   
   
     as
   
   (
     with c as (
-  select * from "db"."_staging"."stg_customers"
+  select * from "db"."public_staging"."stg_customers"
 )
 select
   customer_id,

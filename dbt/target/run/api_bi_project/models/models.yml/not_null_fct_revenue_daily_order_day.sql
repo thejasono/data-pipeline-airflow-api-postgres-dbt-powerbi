@@ -10,7 +10,7 @@ select
 
 
 select order_day
-from "db"."_analytics"."fct_revenue_daily"
+from "db"."public_analytics"."fct_revenue_daily"
 where order_day is null
 
 

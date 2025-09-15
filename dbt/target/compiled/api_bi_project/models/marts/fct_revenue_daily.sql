@@ -1,5 +1,5 @@
 with p as (
-  select * from "db"."_staging"."stg_payments"
+  select * from "db"."public_staging"."stg_payments"
 )
 select
   order_day,

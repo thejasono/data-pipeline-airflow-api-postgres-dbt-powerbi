@@ -1,0 +1,19 @@
+[2025-09-16T01:15:02.194+0200] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-09-16T01:15:02.340+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_api_to_bi.extract_sessions scheduled__2025-09-15T23:00:00+00:00 [queued]>
+[2025-09-16T01:15:02.362+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_api_to_bi.extract_sessions scheduled__2025-09-15T23:00:00+00:00 [queued]>
+[2025-09-16T01:15:02.365+0200] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-09-16T01:15:02.406+0200] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract_sessions> on 2025-09-15 23:00:00+00:00
+[2025-09-16T01:15:02.425+0200] {standard_task_runner.py:64} INFO - Started process 448 to run task
+[2025-09-16T01:15:02.433+0200] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'etl_api_to_bi', 'extract_sessions', 'scheduled__2025-09-15T23:00:00+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/etl_api_to_bi.py', '--cfg-path', '/tmp/tmp9imu2eio']
+[2025-09-16T01:15:02.442+0200] {standard_task_runner.py:91} INFO - Job 13: Subtask extract_sessions
+[2025-09-16T01:15:02.847+0200] {task_command.py:426} INFO - Running <TaskInstance: etl_api_to_bi.extract_sessions scheduled__2025-09-15T23:00:00+00:00 [running]> on host 1621268d5064
+[2025-09-16T01:15:05.017+0200] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data' AIRFLOW_CTX_DAG_ID='etl_api_to_bi' AIRFLOW_CTX_TASK_ID='extract_sessions' AIRFLOW_CTX_EXECUTION_DATE='2025-09-15T23:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-15T23:00:00+00:00'
+[2025-09-16T01:15:05.019+0200] {taskinstance.py:430} INFO - ::endgroup::
+[2025-09-16T01:15:07.831+0200] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-09-16T01:15:07.833+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-16T01:15:07.883+0200] {python.py:237} INFO - Done. Returned value was: 1
+[2025-09-16T01:15:07.889+0200] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-09-16T01:15:07.956+0200] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_api_to_bi, task_id=extract_sessions, run_id=scheduled__2025-09-15T23:00:00+00:00, execution_date=20250915T230000, start_date=20250915T231502, end_date=20250915T231507
+[2025-09-16T01:15:08.025+0200] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-09-16T01:15:08.090+0200] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-09-16T01:15:08.094+0200] {local_task_job_runner.py:222} INFO - ::endgroup::
