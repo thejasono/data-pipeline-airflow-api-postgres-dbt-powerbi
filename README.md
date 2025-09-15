@@ -1,6 +1,6 @@
 # API → Postgres → dbt → Power BI
 
-This stack loads raw data from the mock API into Postgres, transforms it with dbt, and exposes cleaned analytics tables for the `bi_read` user.
+This stack loads raw data from the mock API into Postgres, transforms it with dbt, and exposes cleaned analytics tables (materialized in the `public_analytics` schema) for the `bi_read` user.
 
 ## Services
 
@@ -27,5 +27,5 @@ docker compose run --rm dbt run
 docker compose run --rm dbt test
 ```
 
-Power BI should connect using the `bi_read` credentials and only see tables in the `analytics` schema.
+Power BI should connect using the `bi_read` credentials and only see tables in the `public_analytics` schema.
 
