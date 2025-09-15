@@ -1,5 +1,5 @@
 
-  create view "db"."public_staging"."stg_sessions__dbt_tmp"
+  create view "db"."_staging"."stg_sessions__dbt_tmp"
     
     
   as (

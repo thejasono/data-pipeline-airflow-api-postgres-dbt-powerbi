@@ -2,14 +2,14 @@
   
     
 
-  create  table "db"."public_analytics"."fct_revenue_daily__dbt_tmp"
+  create  table "db"."_analytics"."fct_revenue_daily__dbt_tmp"
   
   
     as
   
   (
     with p as (
-  select * from "db"."public_staging"."stg_payments"
+  select * from "db"."_staging"."stg_payments"
 )
 select
   order_day,

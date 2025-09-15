@@ -1,3 +1,6 @@
+# packages.yml lists external dbt packages (macros, models) that this project depends on.  
+# Running `dbt deps` installs them under `dbt_packages/`, each with its own `dbt_project.yml`.  
+# These package configs don’t override your main project; they just provide additional features.
 packages:
-  - package: dbt-labs/dbt_utils
-    version: [ ">=1.0.0", "<2.0.0" ]
+  - package: dbt-labs/dbt_utils    # Community-maintained helper macros and tests
+    version: [">=1.0.0", "<2.0.0"]  # Pin to major version 1.x for compatibility

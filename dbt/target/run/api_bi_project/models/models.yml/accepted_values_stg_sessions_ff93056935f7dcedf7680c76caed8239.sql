@@ -13,7 +13,7 @@ with all_values as (
         source as value_field,
         count(*) as n_records
 
-    from "db"."public_staging"."stg_sessions"
+    from "db"."_staging"."stg_sessions"
     group by source
 
 )

@@ -1,5 +1,5 @@
 with s as (
-  select * from "db"."public_staging"."stg_sessions"
+  select * from "db"."_staging"."stg_sessions"
 )
 select
   session_day,

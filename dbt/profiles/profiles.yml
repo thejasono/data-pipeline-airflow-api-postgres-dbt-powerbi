@@ -1,12 +1,25 @@
+# profiles.yml defines how dbt connects to your database (target, credentials, and default schema).  
+# Leaving `schema` blank creates top-level `staging` and `analytics` schemas; setting it to `public` prefixes them (`public_staging`, `public_analytics`).
+
 api_bi_profile:
-  target: dev
-  outputs:
-    dev:
-      type: postgres
-      host: postgres
-      user: "{{ env_var('POSTGRES_USER') }}"
-      password: "{{ env_var('POSTGRES_PASSWORD') }}"
-      port: 5432
-      dbname: "{{ env_var('POSTGRES_DB') }}"
-      schema: public
-      threads: 4
+  target: dev  # Default profile target
+  outputs:  # Connection settings per target
+    dev:  # Development environment
+      type: postgres  # Adapter type (PostgreSQL)
+      host: postgres  # Database host
+      user: "{{ env_var('POSTGRES_USER') }}"  # Username from env var
+      password: "{{ env_var('POSTGRES_PASSWORD') }}"  # Password from env var
+      port: 5432  # Database port
+      dbname: "{{ env_var('POSTGRES_DB') }}"  # Database name
+      schema: ""  # Leave blank so dbt creates top-level `staging` and `analytics` schemas.
+                  # If you set this to `public` (or another name), dbt prefixes every model
+                  # schema (e.g. `public_staging`, `public_analytics`).
+                  #
+                  # Default PostgreSQL schema ("public")
+                  # - PostgreSQL uses a schema named `public` by default for objects with
+                  #   no explicit schema.
+                  # - dbt doesn’t drop or rename `public`; with `schema` left blank, dbt simply
+                  #   stops writing models there.
+                  # - `public` can still host other tables (e.g. metadata like `ab_permission`,
+                  #   `ab_permission_view`, etc.).
+      threads: 4  # Number of threads dbt uses

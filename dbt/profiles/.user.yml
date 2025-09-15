@@ -1,1 +1,4 @@
+# .user.yml stores a unique identifier that dbt uses for anonymous usage
+# tracking and distinguishing between different users or environments.
+# It has no effect on model execution and can usually be ignored.
 id: f92d6d58-4ecd-4709-8912-8cbe81e469cf

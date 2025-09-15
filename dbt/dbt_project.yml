@@ -1,3 +1,13 @@
+
+# dbt_project.yml is the central configuration file for this dbt project.  
+# It sets metadata (name, version), references the profile in `profiles.yml`
+# for connections, and defines paths and defaults for models, seeds, tests, etc.
+
+# You may also see additional dbt_project.yml files under `dbt/dbt_packages/`.
+# Each package (e.g., `dbt_utils`) is a self‑contained dbt project, so it ships
+# its own dbt_project.yml. Those files configure the package’s models and macros
+# and don’t override settings in this main project.
+
 name: api_bi_project
 version: 1.0.0
 config-version: 2
