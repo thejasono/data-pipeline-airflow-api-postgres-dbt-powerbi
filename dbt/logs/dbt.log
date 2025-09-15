@@ -14108,3 +14108,1612 @@ drop table if exists "db"."public_analytics"."dim_customer__dbt_backup" cascade
 [0m19:46:07.715634 [debug] [MainThread]: Command `dbt run` succeeded at 19:46:07.715144 after 4.07 seconds
 [0m19:46:07.718636 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b4732898650>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b4732a1c350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7b4732a1cc90>]}
 [0m19:46:07.721491 [debug] [MainThread]: Flushing usage events
+[0m20:00:40.620593 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782935416750>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782935458350>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7829354166d0>]}
+
+
+============================== 20:00:40.660249 | cabec099-e36d-4c16-86d2-e9be240e0e37 ==============================
+[0m20:00:40.660249 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:00:40.664019 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'version_check': 'True', 'log_path': '/usr/app/logs', 'debug': 'False', 'profiles_dir': '/root/.dbt', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'None', 'log_format': 'default', 'introspect': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'target_path': 'None', 'invocation_command': 'dbt deps', 'send_anonymous_usage_stats': 'True'}
+[0m20:00:40.846513 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'cabec099-e36d-4c16-86d2-e9be240e0e37', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782935497f90>]}
+[0m20:00:41.521464 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-oapoqavl'
+[0m20:00:41.523748 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m20:00:41.720230 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m20:00:41.723750 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m20:00:41.840110 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m20:00:41.850970 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m20:00:49.870500 [info ] [MainThread]: Installed from version 1.3.1
+[0m20:00:49.873448 [info ] [MainThread]: Up to date!
+[0m20:00:49.876875 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': 'cabec099-e36d-4c16-86d2-e9be240e0e37', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7829352aa810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782935483210>]}
+[0m20:00:49.881676 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 11.94944, "process_user_time": 3.079903, "process_kernel_time": 1.255738, "process_mem_max_rss": "94820", "process_out_blocks": "1296", "process_in_blocks": "0"}
+[0m20:00:49.884222 [debug] [MainThread]: Command `dbt deps` succeeded at 20:00:49.883944 after 11.95 seconds
+[0m20:00:49.886010 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x782939240790>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78293939c450>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78293939cd90>]}
+[0m20:00:49.887985 [debug] [MainThread]: Flushing usage events
+[0m20:00:54.811465 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba44a6d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba4a63510>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba44e02d0>]}
+
+
+============================== 20:00:54.818190 | 1e6243dd-0ce1-47ef-af47-d6e4287cd422 ==============================
+[0m20:00:54.818190 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:00:54.821474 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'fail_fast': 'False', 'profiles_dir': '/root/.dbt', 'log_path': '/usr/app/logs', 'version_check': 'True', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'static_parser': 'True', 'introspect': 'True', 'log_format': 'default', 'target_path': 'None', 'invocation_command': 'dbt run', 'send_anonymous_usage_stats': 'True'}
+[0m20:00:55.325726 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba44a5f90>]}
+[0m20:00:55.418808 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba81a8790>]}
+[0m20:00:55.420690 [info ] [MainThread]: Registered adapter: postgres=1.8.2
+[0m20:00:55.481950 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m20:00:57.192663 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m20:00:57.195410 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m20:00:57.235879 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba2ba0850>]}
+[0m20:00:57.603925 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba2c13a90>]}
+[0m20:00:57.607011 [info ] [MainThread]: Found 6 models, 11 data tests, 531 macros
+[0m20:00:57.615853 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba45c66d0>]}
+[0m20:00:57.623713 [info ] [MainThread]: 
+[0m20:00:57.626272 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m20:00:57.636774 [debug] [ThreadPool]: Acquiring new postgres connection 'list_db'
+[0m20:00:57.639188 [debug] [ThreadPool]: Acquiring new postgres connection 'list_db'
+[0m20:00:57.741914 [debug] [ThreadPool]: Using postgres connection "list_db"
+[0m20:00:57.742501 [debug] [ThreadPool]: Using postgres connection "list_db"
+[0m20:00:57.743453 [debug] [ThreadPool]: On list_db: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "connection_name": "list_db"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m20:00:57.745049 [debug] [ThreadPool]: On list_db: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "connection_name": "list_db"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m20:00:57.746468 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:00:57.747921 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:00:57.769690 [debug] [ThreadPool]: SQL status: SELECT 9 in 0.0 seconds
+[0m20:00:57.770541 [debug] [ThreadPool]: SQL status: SELECT 9 in 0.0 seconds
+[0m20:00:57.775012 [debug] [ThreadPool]: On list_db: Close
+[0m20:00:57.778528 [debug] [ThreadPool]: On list_db: Close
+[0m20:00:57.789988 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_db, now list_db_public_analytics)
+[0m20:00:57.792033 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_db, now list_db_public_staging)
+[0m20:00:57.809119 [debug] [ThreadPool]: Using postgres connection "list_db_public_analytics"
+[0m20:00:57.817425 [debug] [ThreadPool]: Using postgres connection "list_db_public_staging"
+[0m20:00:57.823135 [debug] [ThreadPool]: On list_db_public_analytics: BEGIN
+[0m20:00:57.825206 [debug] [ThreadPool]: On list_db_public_staging: BEGIN
+[0m20:00:57.828148 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m20:00:57.829607 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m20:00:57.843854 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m20:00:57.845836 [debug] [ThreadPool]: Using postgres connection "list_db_public_analytics"
+[0m20:00:57.847374 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m20:00:57.848238 [debug] [ThreadPool]: On list_db_public_analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "connection_name": "list_db_public_analytics"} */
+select
+      'db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_analytics'
+    union all
+    select
+      'db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_analytics'
+    union all
+    select
+      'db' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public_analytics'
+  
+[0m20:00:57.850071 [debug] [ThreadPool]: Using postgres connection "list_db_public_staging"
+[0m20:00:57.853319 [debug] [ThreadPool]: On list_db_public_staging: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "connection_name": "list_db_public_staging"} */
+select
+      'db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_staging'
+    union all
+    select
+      'db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_staging'
+    union all
+    select
+      'db' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public_staging'
+  
+[0m20:00:57.857564 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.0 seconds
+[0m20:00:57.861161 [debug] [ThreadPool]: On list_db_public_analytics: ROLLBACK
+[0m20:00:57.861984 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.0 seconds
+[0m20:00:57.863845 [debug] [ThreadPool]: On list_db_public_analytics: Close
+[0m20:00:57.866028 [debug] [ThreadPool]: On list_db_public_staging: ROLLBACK
+[0m20:00:57.870553 [debug] [ThreadPool]: On list_db_public_staging: Close
+[0m20:00:57.890464 [debug] [MainThread]: Using postgres connection "master"
+[0m20:00:57.892014 [debug] [MainThread]: On master: BEGIN
+[0m20:00:57.893256 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:00:57.912835 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m20:00:57.914351 [debug] [MainThread]: Using postgres connection "master"
+[0m20:00:57.916136 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m20:00:57.968942 [debug] [MainThread]: SQL status: SELECT 3 in 0.0 seconds
+[0m20:00:57.974822 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba43fb6d0>]}
+[0m20:00:57.976775 [debug] [MainThread]: On master: ROLLBACK
+[0m20:00:57.979471 [debug] [MainThread]: Using postgres connection "master"
+[0m20:00:57.982375 [debug] [MainThread]: On master: BEGIN
+[0m20:00:57.985894 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m20:00:57.988783 [debug] [MainThread]: On master: COMMIT
+[0m20:00:57.993434 [debug] [MainThread]: Using postgres connection "master"
+[0m20:00:57.995308 [debug] [MainThread]: On master: COMMIT
+[0m20:00:57.997812 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m20:00:58.001280 [debug] [MainThread]: On master: Close
+[0m20:00:58.002959 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m20:00:58.004600 [info ] [MainThread]: 
+[0m20:00:58.031030 [debug] [Thread-1 (]: Began running node model.api_bi_project.stg_customers
+[0m20:00:58.031873 [debug] [Thread-2 (]: Began running node model.api_bi_project.stg_payments
+[0m20:00:58.032733 [debug] [Thread-3 (]: Began running node model.api_bi_project.stg_sessions
+[0m20:00:58.035512 [info ] [Thread-1 (]: 1 of 6 START sql view model public_staging.stg_customers ....................... [RUN]
+[0m20:00:58.041972 [info ] [Thread-2 (]: 2 of 6 START sql view model public_staging.stg_payments ........................ [RUN]
+[0m20:00:58.045798 [info ] [Thread-3 (]: 3 of 6 START sql view model public_staging.stg_sessions ........................ [RUN]
+[0m20:00:58.048727 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_db_public_staging, now model.api_bi_project.stg_customers)
+[0m20:00:58.051381 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_db_public_analytics, now model.api_bi_project.stg_payments)
+[0m20:00:58.057828 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.api_bi_project.stg_sessions'
+[0m20:00:58.060352 [debug] [Thread-1 (]: Began compiling node model.api_bi_project.stg_customers
+[0m20:00:58.066614 [debug] [Thread-2 (]: Began compiling node model.api_bi_project.stg_payments
+[0m20:00:58.069630 [debug] [Thread-3 (]: Began compiling node model.api_bi_project.stg_sessions
+[0m20:00:58.086243 [debug] [Thread-1 (]: Writing injected SQL for node "model.api_bi_project.stg_customers"
+[0m20:00:58.094293 [debug] [Thread-2 (]: Writing injected SQL for node "model.api_bi_project.stg_payments"
+[0m20:00:58.103358 [debug] [Thread-3 (]: Writing injected SQL for node "model.api_bi_project.stg_sessions"
+[0m20:00:58.118318 [debug] [Thread-2 (]: Began executing node model.api_bi_project.stg_payments
+[0m20:00:58.120389 [debug] [Thread-3 (]: Began executing node model.api_bi_project.stg_sessions
+[0m20:00:58.121697 [debug] [Thread-1 (]: Began executing node model.api_bi_project.stg_customers
+[0m20:00:58.236801 [debug] [Thread-3 (]: Writing runtime sql for node "model.api_bi_project.stg_sessions"
+[0m20:00:58.261515 [debug] [Thread-2 (]: Writing runtime sql for node "model.api_bi_project.stg_payments"
+[0m20:00:58.271051 [debug] [Thread-1 (]: Writing runtime sql for node "model.api_bi_project.stg_customers"
+[0m20:00:58.323390 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:00:58.325711 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:00:58.331453 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:00:58.335561 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: BEGIN
+[0m20:00:58.348265 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: BEGIN
+[0m20:00:58.395524 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m20:00:58.376796 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m20:00:58.357992 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: BEGIN
+[0m20:00:58.442630 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:00:58.458000 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:00:58.465266 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:00:58.470038 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:00:58.473893 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_sessions"} */
+
+  create view "db"."public_staging"."stg_sessions__dbt_tmp"
+    
+    
+  as (
+    with src as (
+  select * from raw.sessions
+)
+select
+  session_id,
+  nullif(customer_id::text,'')::uuid as customer_id,
+  lower(source) as source,
+  lower(medium) as medium,
+  campaign,
+  lower(device) as device,
+  country,
+  pageviews,
+  session_duration_s,
+  (bounced=1) as bounced,
+  (converted=1) as converted,
+  session_start::timestamp as session_start,
+  updated_at::timestamp as updated_at,
+  date_trunc('day', session_start)::date as session_day
+from src
+  );
+[0m20:00:58.484550 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:00:58.491155 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_payments"} */
+
+  create view "db"."public_staging"."stg_payments__dbt_tmp"
+    
+    
+  as (
+    with src as (
+  select * from raw.payments
+), success as (
+  select *, (amount - coalesce(fee,0) - coalesce(refunded_amount,0))::numeric as net_revenue
+  from src
+  where status = 'succeeded'
+)
+select
+  payment_id,
+  customer_id,
+  product,
+  amount,
+  currency,
+  status,
+  refunded_amount,
+  fee,
+  payment_method,
+  country,
+  created_at::timestamp as created_at,
+  updated_at::timestamp as updated_at,
+  net_revenue,
+  date_trunc('day', created_at)::date as order_day
+from success
+  );
+[0m20:00:58.493582 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:00:58.500547 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m20:00:58.501863 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:00:58.518251 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m20:00:58.526717 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_customers"} */
+
+  create view "db"."public_staging"."stg_customers__dbt_tmp"
+    
+    
+  as (
+    with src as (
+  select * from raw.customers
+)
+select
+  customer_id,
+  company_name,
+  country,
+  industry,
+  company_size,
+  signup_date::timestamp as signup_date,
+  updated_at::timestamp as updated_at,
+  is_churned::boolean as is_churned,
+  date_trunc('month', signup_date)::date as signup_month
+from src
+  );
+[0m20:00:58.564270 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:00:58.581344 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:00:58.650722 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m20:00:58.652271 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_sessions"} */
+alter table "db"."public_staging"."stg_sessions" rename to "stg_sessions__dbt_backup"
+[0m20:00:58.710737 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_payments"} */
+alter table "db"."public_staging"."stg_payments" rename to "stg_payments__dbt_backup"
+[0m20:00:58.751206 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:00:58.780816 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:00:58.790052 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:00:58.793829 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_customers"} */
+alter table "db"."public_staging"."stg_customers" rename to "stg_customers__dbt_backup"
+[0m20:00:58.825267 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:00:58.872254 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:00:58.882338 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:00:58.885451 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_sessions"} */
+alter table "db"."public_staging"."stg_sessions__dbt_tmp" rename to "stg_sessions"
+[0m20:00:58.889609 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_payments"} */
+alter table "db"."public_staging"."stg_payments__dbt_tmp" rename to "stg_payments"
+[0m20:00:58.927364 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:00:58.939458 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:00:58.945527 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:00:58.952880 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_customers"} */
+alter table "db"."public_staging"."stg_customers__dbt_tmp" rename to "stg_customers"
+[0m20:00:59.100692 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:00:59.105577 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: COMMIT
+[0m20:00:59.112064 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: COMMIT
+[0m20:00:59.126640 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: COMMIT
+[0m20:00:59.136544 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:00:59.152012 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:00:59.155492 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:00:59.162412 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: COMMIT
+[0m20:00:59.169795 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: COMMIT
+[0m20:00:59.175943 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: COMMIT
+[0m20:00:59.187385 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:00:59.193264 [debug] [Thread-3 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:00:59.205440 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:00:59.257264 [debug] [Thread-2 (]: Applying DROP to: "db"."public_staging"."stg_payments__dbt_backup"
+[0m20:00:59.307264 [debug] [Thread-3 (]: Applying DROP to: "db"."public_staging"."stg_sessions__dbt_backup"
+[0m20:00:59.339431 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:00:59.333544 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:00:59.302658 [debug] [Thread-1 (]: Applying DROP to: "db"."public_staging"."stg_customers__dbt_backup"
+[0m20:00:59.343243 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_sessions"} */
+drop view if exists "db"."public_staging"."stg_sessions__dbt_backup" cascade
+[0m20:00:59.347017 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_payments"} */
+drop view if exists "db"."public_staging"."stg_payments__dbt_backup" cascade
+[0m20:00:59.361711 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:00:59.389909 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m20:00:59.395897 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_customers"} */
+drop view if exists "db"."public_staging"."stg_customers__dbt_backup" cascade
+[0m20:00:59.398191 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m20:00:59.413259 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: Close
+[0m20:00:59.439189 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: Close
+[0m20:00:59.442974 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m20:00:59.455443 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba2ad5bd0>]}
+[0m20:00:59.487167 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba43b7950>]}
+[0m20:00:59.541416 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: Close
+[0m20:00:59.546237 [info ] [Thread-3 (]: 3 of 6 OK created sql view model public_staging.stg_sessions ................... [[32mCREATE VIEW[0m in 1.40s]
+[0m20:00:59.561397 [info ] [Thread-2 (]: 2 of 6 OK created sql view model public_staging.stg_payments ................... [[32mCREATE VIEW[0m in 1.44s]
+[0m20:00:59.566347 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba15d6710>]}
+[0m20:00:59.578338 [debug] [Thread-3 (]: Finished running node model.api_bi_project.stg_sessions
+[0m20:00:59.586173 [debug] [Thread-2 (]: Finished running node model.api_bi_project.stg_payments
+[0m20:00:59.593951 [info ] [Thread-1 (]: 1 of 6 OK created sql view model public_staging.stg_customers .................. [[32mCREATE VIEW[0m in 1.52s]
+[0m20:00:59.604290 [debug] [Thread-4 (]: Began running node model.api_bi_project.fct_marketing_attribution
+[0m20:00:59.609911 [debug] [Thread-3 (]: Began running node model.api_bi_project.fct_revenue_daily
+[0m20:00:59.613367 [debug] [Thread-1 (]: Finished running node model.api_bi_project.stg_customers
+[0m20:00:59.617722 [info ] [Thread-4 (]: 4 of 6 START sql table model public_analytics.fct_marketing_attribution ........ [RUN]
+[0m20:00:59.625982 [info ] [Thread-3 (]: 5 of 6 START sql table model public_analytics.fct_revenue_daily ................ [RUN]
+[0m20:00:59.634925 [debug] [Thread-2 (]: Began running node model.api_bi_project.dim_customer
+[0m20:00:59.644058 [info ] [Thread-2 (]: 6 of 6 START sql table model public_analytics.dim_customer ..................... [RUN]
+[0m20:00:59.640502 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.api_bi_project.stg_sessions, now model.api_bi_project.fct_revenue_daily)
+[0m20:00:59.637508 [debug] [Thread-4 (]: Acquiring new postgres connection 'model.api_bi_project.fct_marketing_attribution'
+[0m20:00:59.651960 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.api_bi_project.stg_payments, now model.api_bi_project.dim_customer)
+[0m20:00:59.659863 [debug] [Thread-3 (]: Began compiling node model.api_bi_project.fct_revenue_daily
+[0m20:00:59.665455 [debug] [Thread-4 (]: Began compiling node model.api_bi_project.fct_marketing_attribution
+[0m20:00:59.669217 [debug] [Thread-2 (]: Began compiling node model.api_bi_project.dim_customer
+[0m20:00:59.703082 [debug] [Thread-3 (]: Writing injected SQL for node "model.api_bi_project.fct_revenue_daily"
+[0m20:00:59.721173 [debug] [Thread-4 (]: Writing injected SQL for node "model.api_bi_project.fct_marketing_attribution"
+[0m20:00:59.743192 [debug] [Thread-2 (]: Writing injected SQL for node "model.api_bi_project.dim_customer"
+[0m20:00:59.771370 [debug] [Thread-3 (]: Began executing node model.api_bi_project.fct_revenue_daily
+[0m20:00:59.778319 [debug] [Thread-2 (]: Began executing node model.api_bi_project.dim_customer
+[0m20:00:59.799950 [debug] [Thread-4 (]: Began executing node model.api_bi_project.fct_marketing_attribution
+[0m20:01:00.054273 [debug] [Thread-4 (]: Writing runtime sql for node "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:00.055653 [debug] [Thread-3 (]: Writing runtime sql for node "model.api_bi_project.fct_revenue_daily"
+[0m20:01:00.068086 [debug] [Thread-2 (]: Writing runtime sql for node "model.api_bi_project.dim_customer"
+[0m20:01:00.119564 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:00.120888 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:00.128801 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:00.131309 [debug] [Thread-2 (]: On model.api_bi_project.dim_customer: BEGIN
+[0m20:01:00.139373 [debug] [Thread-3 (]: On model.api_bi_project.fct_revenue_daily: BEGIN
+[0m20:01:00.151880 [debug] [Thread-4 (]: On model.api_bi_project.fct_marketing_attribution: BEGIN
+[0m20:01:00.180180 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m20:01:00.173382 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m20:01:00.156469 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m20:01:00.211175 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:00.223403 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:00.218928 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:00.216792 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:00.228964 [debug] [Thread-4 (]: On model.api_bi_project.fct_marketing_attribution: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_marketing_attribution"} */
+
+  
+    
+
+  create  table "db"."public_analytics"."fct_marketing_attribution__dbt_tmp"
+  
+  
+    as
+  
+  (
+    with s as (
+  select * from "db"."public_staging"."stg_sessions"
+)
+select
+  session_day,
+  source,
+  medium,
+  coalesce(campaign,'') as campaign,
+  sum(converted::int) as conversions,
+  avg((not bounced)::int)::float as engagement_rate
+from s
+group by 1,2,3,4
+  );
+  
+[0m20:01:00.232375 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:00.234570 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:00.243063 [debug] [Thread-2 (]: On model.api_bi_project.dim_customer: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.dim_customer"} */
+
+  
+    
+
+  create  table "db"."public_analytics"."dim_customer__dbt_tmp"
+  
+  
+    as
+  
+  (
+    with c as (
+  select * from "db"."public_staging"."stg_customers"
+)
+select
+  customer_id,
+  company_name,
+  country,
+  industry,
+  company_size,
+  signup_date,
+  is_churned,
+  signup_month
+from c
+  );
+  
+[0m20:01:00.247018 [debug] [Thread-3 (]: On model.api_bi_project.fct_revenue_daily: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_revenue_daily"} */
+
+  
+    
+
+  create  table "db"."public_analytics"."fct_revenue_daily__dbt_tmp"
+  
+  
+    as
+  
+  (
+    with p as (
+  select * from "db"."public_staging"."stg_payments"
+)
+select
+  order_day,
+  product,
+  country,
+  sum(net_revenue) as net_revenue,
+  count(*) as orders
+from p
+group by 1,2,3
+  );
+  
+[0m20:01:00.299142 [debug] [Thread-2 (]: SQL status: SELECT 1000 in 0.0 seconds
+[0m20:01:00.345347 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:00.347285 [debug] [Thread-2 (]: On model.api_bi_project.dim_customer: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.dim_customer"} */
+alter table "db"."public_analytics"."dim_customer" rename to "dim_customer__dbt_backup"
+[0m20:01:00.359781 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:00.692843 [debug] [Thread-3 (]: SQL status: SELECT 4336 in 0.0 seconds
+[0m20:01:00.694323 [debug] [Thread-4 (]: SQL status: SELECT 5698 in 0.0 seconds
+[0m20:01:00.703184 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:00.721375 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:00.742280 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:00.746246 [debug] [Thread-2 (]: On model.api_bi_project.dim_customer: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.dim_customer"} */
+alter table "db"."public_analytics"."dim_customer__dbt_tmp" rename to "dim_customer"
+[0m20:01:00.751510 [debug] [Thread-3 (]: On model.api_bi_project.fct_revenue_daily: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_revenue_daily"} */
+alter table "db"."public_analytics"."fct_revenue_daily" rename to "fct_revenue_daily__dbt_backup"
+[0m20:01:00.757058 [debug] [Thread-4 (]: On model.api_bi_project.fct_marketing_attribution: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_marketing_attribution"} */
+alter table "db"."public_analytics"."fct_marketing_attribution" rename to "fct_marketing_attribution__dbt_backup"
+[0m20:01:00.763388 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:00.766816 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:00.775672 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:00.808653 [debug] [Thread-2 (]: On model.api_bi_project.dim_customer: COMMIT
+[0m20:01:00.849147 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:00.851346 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:00.858003 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:00.862095 [debug] [Thread-3 (]: On model.api_bi_project.fct_revenue_daily: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_revenue_daily"} */
+alter table "db"."public_analytics"."fct_revenue_daily__dbt_tmp" rename to "fct_revenue_daily"
+[0m20:01:00.864367 [debug] [Thread-4 (]: On model.api_bi_project.fct_marketing_attribution: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_marketing_attribution"} */
+alter table "db"."public_analytics"."fct_marketing_attribution__dbt_tmp" rename to "fct_marketing_attribution"
+[0m20:01:00.866412 [debug] [Thread-2 (]: On model.api_bi_project.dim_customer: COMMIT
+[0m20:01:00.873817 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:00.879106 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:00.882357 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:00.891314 [debug] [Thread-3 (]: On model.api_bi_project.fct_revenue_daily: COMMIT
+[0m20:01:00.896113 [debug] [Thread-4 (]: On model.api_bi_project.fct_marketing_attribution: COMMIT
+[0m20:01:00.907826 [debug] [Thread-2 (]: Applying DROP to: "db"."public_analytics"."dim_customer__dbt_backup"
+[0m20:01:00.910827 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:00.913236 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:00.928890 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:00.931210 [debug] [Thread-3 (]: On model.api_bi_project.fct_revenue_daily: COMMIT
+[0m20:01:00.938918 [debug] [Thread-4 (]: On model.api_bi_project.fct_marketing_attribution: COMMIT
+[0m20:01:00.941942 [debug] [Thread-2 (]: On model.api_bi_project.dim_customer: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.dim_customer"} */
+drop table if exists "db"."public_analytics"."dim_customer__dbt_backup" cascade
+[0m20:01:00.950389 [debug] [Thread-3 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:00.958654 [debug] [Thread-4 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:00.969153 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m20:01:00.973987 [debug] [Thread-3 (]: Applying DROP to: "db"."public_analytics"."fct_revenue_daily__dbt_backup"
+[0m20:01:00.987239 [debug] [Thread-4 (]: Applying DROP to: "db"."public_analytics"."fct_marketing_attribution__dbt_backup"
+[0m20:01:00.993430 [debug] [Thread-2 (]: On model.api_bi_project.dim_customer: Close
+[0m20:01:00.997669 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:01.002693 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:01.009466 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba29a8890>]}
+[0m20:01:01.018397 [debug] [Thread-3 (]: On model.api_bi_project.fct_revenue_daily: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_revenue_daily"} */
+drop table if exists "db"."public_analytics"."fct_revenue_daily__dbt_backup" cascade
+[0m20:01:01.022542 [debug] [Thread-4 (]: On model.api_bi_project.fct_marketing_attribution: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_marketing_attribution"} */
+drop table if exists "db"."public_analytics"."fct_marketing_attribution__dbt_backup" cascade
+[0m20:01:01.030096 [info ] [Thread-2 (]: 6 of 6 OK created sql table model public_analytics.dim_customer ................ [[32mSELECT 1000[0m in 1.36s]
+[0m20:01:01.051156 [debug] [Thread-3 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m20:01:01.066080 [debug] [Thread-2 (]: Finished running node model.api_bi_project.dim_customer
+[0m20:01:01.067082 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m20:01:01.075978 [debug] [Thread-3 (]: On model.api_bi_project.fct_revenue_daily: Close
+[0m20:01:01.097056 [debug] [Thread-4 (]: On model.api_bi_project.fct_marketing_attribution: Close
+[0m20:01:01.106090 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba2ad5110>]}
+[0m20:01:01.111642 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '1e6243dd-0ce1-47ef-af47-d6e4287cd422', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba2ad48d0>]}
+[0m20:01:01.132062 [info ] [Thread-3 (]: 5 of 6 OK created sql table model public_analytics.fct_revenue_daily ........... [[32mSELECT 4336[0m in 1.47s]
+[0m20:01:01.157154 [info ] [Thread-4 (]: 4 of 6 OK created sql table model public_analytics.fct_marketing_attribution ... [[32mSELECT 5698[0m in 1.47s]
+[0m20:01:01.197131 [debug] [Thread-3 (]: Finished running node model.api_bi_project.fct_revenue_daily
+[0m20:01:01.216197 [debug] [Thread-4 (]: Finished running node model.api_bi_project.fct_marketing_attribution
+[0m20:01:01.234545 [debug] [MainThread]: Using postgres connection "master"
+[0m20:01:01.236697 [debug] [MainThread]: On master: BEGIN
+[0m20:01:01.239262 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m20:01:01.268744 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:01.271261 [debug] [MainThread]: On master: COMMIT
+[0m20:01:01.274085 [debug] [MainThread]: Using postgres connection "master"
+[0m20:01:01.276558 [debug] [MainThread]: On master: COMMIT
+[0m20:01:01.279441 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:01.282187 [debug] [MainThread]: On master: Close
+[0m20:01:01.285624 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:01:01.296966 [debug] [MainThread]: Connection 'model.api_bi_project.stg_customers' was properly closed.
+[0m20:01:01.301303 [debug] [MainThread]: Connection 'model.api_bi_project.dim_customer' was properly closed.
+[0m20:01:01.303954 [debug] [MainThread]: Connection 'model.api_bi_project.fct_revenue_daily' was properly closed.
+[0m20:01:01.305918 [debug] [MainThread]: Connection 'model.api_bi_project.fct_marketing_attribution' was properly closed.
+[0m20:01:01.311583 [info ] [MainThread]: 
+[0m20:01:01.317467 [info ] [MainThread]: Finished running 3 view models, 3 table models in 0 hours 0 minutes and 3.69 seconds (3.69s).
+[0m20:01:01.324437 [debug] [MainThread]: Command end result
+[0m20:01:01.523250 [info ] [MainThread]: 
+[0m20:01:01.526224 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:01:01.533112 [info ] [MainThread]: 
+[0m20:01:01.539439 [info ] [MainThread]: Done. PASS=6 WARN=0 ERROR=0 SKIP=0 TOTAL=6
+[0m20:01:01.547511 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 6.8755527, "process_user_time": 5.537435, "process_kernel_time": 0.889141, "process_mem_max_rss": "114936", "process_out_blocks": "144", "process_in_blocks": "0"}
+[0m20:01:01.555038 [debug] [MainThread]: Command `dbt run` succeeded at 20:01:01.554505 after 6.88 seconds
+[0m20:01:01.558521 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba82906d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba8414390>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a9ba8414cd0>]}
+[0m20:01:01.561246 [debug] [MainThread]: Flushing usage events
+[0m20:01:08.027739 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b90d4b2e10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b90d4b2fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b90d4b2710>]}
+
+
+============================== 20:01:08.035639 | 5a5e854d-7b3c-4bdc-bb11-e71eb557d886 ==============================
+[0m20:01:08.035639 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:01:08.038763 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': '/root/.dbt', 'fail_fast': 'False', 'debug': 'False', 'log_path': '/usr/app/logs', 'version_check': 'True', 'warn_error': 'None', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'None', 'quiet': 'False', 'no_print': 'None', 'log_format': 'default', 'static_parser': 'True', 'invocation_command': 'dbt deps --profiles-dir /root/.dbt', 'introspect': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'send_anonymous_usage_stats': 'True'}
+[0m20:01:08.210786 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '5a5e854d-7b3c-4bdc-bb11-e71eb557d886', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b90d374290>]}
+[0m20:01:08.830927 [debug] [MainThread]: Set downloads directory='/tmp/dbt-downloads-1qk7l57c'
+[0m20:01:08.832757 [debug] [MainThread]: Making package index registry request: GET https://hub.getdbt.com/api/v1/index.json
+[0m20:01:08.922482 [debug] [MainThread]: Response from registry index: GET https://hub.getdbt.com/api/v1/index.json 200
+[0m20:01:08.926560 [debug] [MainThread]: Making package registry request: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json
+[0m20:01:09.022842 [debug] [MainThread]: Response from registry: GET https://hub.getdbt.com/api/v1/dbt-labs/dbt_utils.json 200
+[0m20:01:09.032645 [info ] [MainThread]: Installing dbt-labs/dbt_utils
+[0m20:01:14.995279 [info ] [MainThread]: Installed from version 1.3.1
+[0m20:01:14.997768 [info ] [MainThread]: Up to date!
+[0m20:01:15.002221 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'package', 'label': '5a5e854d-7b3c-4bdc-bb11-e71eb557d886', 'property_': 'install', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b90d356b10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b90d523750>]}
+[0m20:01:15.006370 [debug] [MainThread]: Resource report: {"command_name": "deps", "command_success": true, "command_wall_clock_time": 7.9694934, "process_user_time": 2.435541, "process_kernel_time": 0.739767, "process_mem_max_rss": "94708", "process_in_blocks": "16", "process_out_blocks": "168"}
+[0m20:01:15.009303 [debug] [MainThread]: Command `dbt deps` succeeded at 20:01:15.008869 after 7.97 seconds
+[0m20:01:15.011204 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b90d25acd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b9112b8810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b91143ced0>]}
+[0m20:01:15.012845 [debug] [MainThread]: Flushing usage events
+[0m20:01:20.936866 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a249e910>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a3126090>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a24c7bd0>]}
+
+
+============================== 20:01:20.941708 | 7ea13914-85a5-44fd-9802-7ff88c52f438 ==============================
+[0m20:01:20.941708 [info ] [MainThread]: Running with dbt=1.8.3
+[0m20:01:20.944058 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'version_check': 'True', 'fail_fast': 'True', 'log_path': '/usr/app/logs', 'profiles_dir': '/root/.dbt', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'empty': 'False', 'log_format': 'default', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'introspect': 'True', 'target_path': 'None', 'invocation_command': 'dbt build --fail-fast --profiles-dir /root/.dbt', 'send_anonymous_usage_stats': 'True'}
+[0m20:01:21.257713 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a24ecbd0>]}
+[0m20:01:21.347580 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a61e4e10>]}
+[0m20:01:21.350800 [info ] [MainThread]: Registered adapter: postgres=1.8.2
+[0m20:01:21.419630 [debug] [MainThread]: checksum: 30bd4080c2bc8dee5936f8f60083ffbe1c906859d0fd965607c2144031479456, vars: {}, profile: , target: , version: 1.8.3
+[0m20:01:23.447939 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m20:01:23.452762 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m20:01:23.541818 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a24c4f10>]}
+[0m20:01:23.824214 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a06c8ed0>]}
+[0m20:01:23.826577 [info ] [MainThread]: Found 6 models, 11 data tests, 531 macros
+[0m20:01:23.840071 [info ] [MainThread]: 
+[0m20:01:23.843277 [debug] [MainThread]: Acquiring new postgres connection 'master'
+[0m20:01:23.857531 [debug] [ThreadPool]: Acquiring new postgres connection 'list_db'
+[0m20:01:23.859337 [debug] [ThreadPool]: Acquiring new postgres connection 'list_db'
+[0m20:01:23.976741 [debug] [ThreadPool]: Using postgres connection "list_db"
+[0m20:01:23.977728 [debug] [ThreadPool]: Using postgres connection "list_db"
+[0m20:01:23.981180 [debug] [ThreadPool]: On list_db: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "connection_name": "list_db"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m20:01:23.985797 [debug] [ThreadPool]: On list_db: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "connection_name": "list_db"} */
+
+    select distinct nspname from pg_namespace
+  
+[0m20:01:23.988091 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:01:23.992985 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m20:01:24.026101 [debug] [ThreadPool]: SQL status: SELECT 9 in 0.0 seconds
+[0m20:01:24.028656 [debug] [ThreadPool]: SQL status: SELECT 9 in 0.0 seconds
+[0m20:01:24.033073 [debug] [ThreadPool]: On list_db: Close
+[0m20:01:24.038198 [debug] [ThreadPool]: On list_db: Close
+[0m20:01:24.047061 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_db, now list_db_public_staging)
+[0m20:01:24.049228 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_db, now list_db_public_analytics)
+[0m20:01:24.065458 [debug] [ThreadPool]: Using postgres connection "list_db_public_staging"
+[0m20:01:24.071538 [debug] [ThreadPool]: Using postgres connection "list_db_public_analytics"
+[0m20:01:24.073691 [debug] [ThreadPool]: On list_db_public_staging: BEGIN
+[0m20:01:24.075291 [debug] [ThreadPool]: On list_db_public_analytics: BEGIN
+[0m20:01:24.079354 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m20:01:24.082155 [debug] [ThreadPool]: Opening a new connection, currently in state closed
+[0m20:01:24.104850 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:24.113503 [debug] [ThreadPool]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:24.116337 [debug] [ThreadPool]: Using postgres connection "list_db_public_staging"
+[0m20:01:24.120816 [debug] [ThreadPool]: Using postgres connection "list_db_public_analytics"
+[0m20:01:24.128683 [debug] [ThreadPool]: On list_db_public_staging: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "connection_name": "list_db_public_staging"} */
+select
+      'db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_staging'
+    union all
+    select
+      'db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_staging'
+    union all
+    select
+      'db' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public_staging'
+  
+[0m20:01:24.131301 [debug] [ThreadPool]: On list_db_public_analytics: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "connection_name": "list_db_public_analytics"} */
+select
+      'db' as database,
+      tablename as name,
+      schemaname as schema,
+      'table' as type
+    from pg_tables
+    where schemaname ilike 'public_analytics'
+    union all
+    select
+      'db' as database,
+      viewname as name,
+      schemaname as schema,
+      'view' as type
+    from pg_views
+    where schemaname ilike 'public_analytics'
+    union all
+    select
+      'db' as database,
+      matviewname as name,
+      schemaname as schema,
+      'materialized_view' as type
+    from pg_matviews
+    where schemaname ilike 'public_analytics'
+  
+[0m20:01:24.150207 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.0 seconds
+[0m20:01:24.164865 [debug] [ThreadPool]: On list_db_public_staging: ROLLBACK
+[0m20:01:24.167550 [debug] [ThreadPool]: SQL status: SELECT 3 in 0.0 seconds
+[0m20:01:24.182270 [debug] [ThreadPool]: On list_db_public_analytics: ROLLBACK
+[0m20:01:24.184267 [debug] [ThreadPool]: On list_db_public_staging: Close
+[0m20:01:24.188274 [debug] [ThreadPool]: On list_db_public_analytics: Close
+[0m20:01:24.249549 [debug] [MainThread]: Using postgres connection "master"
+[0m20:01:24.253093 [debug] [MainThread]: On master: BEGIN
+[0m20:01:24.255150 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m20:01:24.274530 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:24.277968 [debug] [MainThread]: Using postgres connection "master"
+[0m20:01:24.281174 [debug] [MainThread]: On master: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "connection_name": "master"} */
+with relation as (
+        select
+            pg_rewrite.ev_class as class,
+            pg_rewrite.oid as id
+        from pg_rewrite
+    ),
+    class as (
+        select
+            oid as id,
+            relname as name,
+            relnamespace as schema,
+            relkind as kind
+        from pg_class
+    ),
+    dependency as (
+        select distinct
+            pg_depend.objid as id,
+            pg_depend.refobjid as ref
+        from pg_depend
+    ),
+    schema as (
+        select
+            pg_namespace.oid as id,
+            pg_namespace.nspname as name
+        from pg_namespace
+        where nspname != 'information_schema' and nspname not like 'pg\_%'
+    ),
+    referenced as (
+        select
+            relation.id AS id,
+            referenced_class.name ,
+            referenced_class.schema ,
+            referenced_class.kind
+        from relation
+        join class as referenced_class on relation.class=referenced_class.id
+        where referenced_class.kind in ('r', 'v', 'm')
+    ),
+    relationships as (
+        select
+            referenced.name as referenced_name,
+            referenced.schema as referenced_schema_id,
+            dependent_class.name as dependent_name,
+            dependent_class.schema as dependent_schema_id,
+            referenced.kind as kind
+        from referenced
+        join dependency on referenced.id=dependency.id
+        join class as dependent_class on dependency.ref=dependent_class.id
+        where
+            (referenced.name != dependent_class.name or
+             referenced.schema != dependent_class.schema)
+    )
+
+    select
+        referenced_schema.name as referenced_schema,
+        relationships.referenced_name as referenced_name,
+        dependent_schema.name as dependent_schema,
+        relationships.dependent_name as dependent_name
+    from relationships
+    join schema as dependent_schema on relationships.dependent_schema_id=dependent_schema.id
+    join schema as referenced_schema on relationships.referenced_schema_id=referenced_schema.id
+    group by referenced_schema, referenced_name, dependent_schema, dependent_name
+    order by referenced_schema, referenced_name, dependent_schema, dependent_name;
+[0m20:01:24.331335 [debug] [MainThread]: SQL status: SELECT 3 in 0.0 seconds
+[0m20:01:24.336110 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78609f2b9550>]}
+[0m20:01:24.339829 [debug] [MainThread]: On master: ROLLBACK
+[0m20:01:24.343105 [debug] [MainThread]: Using postgres connection "master"
+[0m20:01:24.344777 [debug] [MainThread]: On master: BEGIN
+[0m20:01:24.346968 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:24.351188 [debug] [MainThread]: On master: COMMIT
+[0m20:01:24.353129 [debug] [MainThread]: Using postgres connection "master"
+[0m20:01:24.354857 [debug] [MainThread]: On master: COMMIT
+[0m20:01:24.356619 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:24.359125 [debug] [MainThread]: On master: Close
+[0m20:01:24.360918 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m20:01:24.365286 [info ] [MainThread]: 
+[0m20:01:24.375618 [debug] [Thread-1 (]: Began running node model.api_bi_project.stg_customers
+[0m20:01:24.376757 [debug] [Thread-2 (]: Began running node model.api_bi_project.stg_payments
+[0m20:01:24.377413 [debug] [Thread-3 (]: Began running node model.api_bi_project.stg_sessions
+[0m20:01:24.379044 [info ] [Thread-1 (]: 1 of 17 START sql view model public_staging.stg_customers ...................... [RUN]
+[0m20:01:24.381699 [info ] [Thread-2 (]: 2 of 17 START sql view model public_staging.stg_payments ....................... [RUN]
+[0m20:01:24.385958 [info ] [Thread-3 (]: 3 of 17 START sql view model public_staging.stg_sessions ....................... [RUN]
+[0m20:01:24.388889 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly list_db_public_analytics, now model.api_bi_project.stg_customers)
+[0m20:01:24.390749 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_db_public_staging, now model.api_bi_project.stg_payments)
+[0m20:01:24.393754 [debug] [Thread-3 (]: Acquiring new postgres connection 'model.api_bi_project.stg_sessions'
+[0m20:01:24.395850 [debug] [Thread-1 (]: Began compiling node model.api_bi_project.stg_customers
+[0m20:01:24.397474 [debug] [Thread-2 (]: Began compiling node model.api_bi_project.stg_payments
+[0m20:01:24.399073 [debug] [Thread-3 (]: Began compiling node model.api_bi_project.stg_sessions
+[0m20:01:24.414030 [debug] [Thread-1 (]: Writing injected SQL for node "model.api_bi_project.stg_customers"
+[0m20:01:24.421567 [debug] [Thread-2 (]: Writing injected SQL for node "model.api_bi_project.stg_payments"
+[0m20:01:24.426151 [debug] [Thread-3 (]: Writing injected SQL for node "model.api_bi_project.stg_sessions"
+[0m20:01:24.435280 [debug] [Thread-1 (]: Began executing node model.api_bi_project.stg_customers
+[0m20:01:24.437086 [debug] [Thread-2 (]: Began executing node model.api_bi_project.stg_payments
+[0m20:01:24.444313 [debug] [Thread-3 (]: Began executing node model.api_bi_project.stg_sessions
+[0m20:01:24.552722 [debug] [Thread-1 (]: Writing runtime sql for node "model.api_bi_project.stg_customers"
+[0m20:01:24.554209 [debug] [Thread-2 (]: Writing runtime sql for node "model.api_bi_project.stg_payments"
+[0m20:01:24.561898 [debug] [Thread-3 (]: Writing runtime sql for node "model.api_bi_project.stg_sessions"
+[0m20:01:24.573023 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:01:24.575403 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:01:24.576678 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: BEGIN
+[0m20:01:24.577342 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:01:24.578876 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: BEGIN
+[0m20:01:24.580543 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:01:24.583397 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: BEGIN
+[0m20:01:24.586030 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m20:01:24.590594 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m20:01:24.606539 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:24.616638 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:24.623849 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:01:24.629289 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:01:24.634863 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:24.642910 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_customers"} */
+
+  create view "db"."public_staging"."stg_customers__dbt_tmp"
+    
+    
+  as (
+    with src as (
+  select * from raw.customers
+)
+select
+  customer_id,
+  company_name,
+  country,
+  industry,
+  company_size,
+  signup_date::timestamp as signup_date,
+  updated_at::timestamp as updated_at,
+  is_churned::boolean as is_churned,
+  date_trunc('month', signup_date)::date as signup_month
+from src
+  );
+[0m20:01:24.649735 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_sessions"} */
+
+  create view "db"."public_staging"."stg_sessions__dbt_tmp"
+    
+    
+  as (
+    with src as (
+  select * from raw.sessions
+)
+select
+  session_id,
+  nullif(customer_id::text,'')::uuid as customer_id,
+  lower(source) as source,
+  lower(medium) as medium,
+  campaign,
+  lower(device) as device,
+  country,
+  pageviews,
+  session_duration_s,
+  (bounced=1) as bounced,
+  (converted=1) as converted,
+  session_start::timestamp as session_start,
+  updated_at::timestamp as updated_at,
+  date_trunc('day', session_start)::date as session_day
+from src
+  );
+[0m20:01:24.658738 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:01:24.672009 [debug] [Thread-1 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m20:01:24.680870 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_payments"} */
+
+  create view "db"."public_staging"."stg_payments__dbt_tmp"
+    
+    
+  as (
+    with src as (
+  select * from raw.payments
+), success as (
+  select *, (amount - coalesce(fee,0) - coalesce(refunded_amount,0))::numeric as net_revenue
+  from src
+  where status = 'succeeded'
+)
+select
+  payment_id,
+  customer_id,
+  product,
+  amount,
+  currency,
+  status,
+  refunded_amount,
+  fee,
+  payment_method,
+  country,
+  created_at::timestamp as created_at,
+  updated_at::timestamp as updated_at,
+  net_revenue,
+  date_trunc('day', created_at)::date as order_day
+from success
+  );
+[0m20:01:24.682330 [debug] [Thread-3 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m20:01:24.726994 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:01:24.744743 [debug] [Thread-2 (]: SQL status: CREATE VIEW in 0.0 seconds
+[0m20:01:24.761805 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:01:24.766661 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_customers"} */
+alter table "db"."public_staging"."stg_customers" rename to "stg_customers__dbt_backup"
+[0m20:01:24.798963 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:01:24.800335 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_sessions"} */
+alter table "db"."public_staging"."stg_sessions" rename to "stg_sessions__dbt_backup"
+[0m20:01:24.829299 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:24.832346 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_payments"} */
+alter table "db"."public_staging"."stg_payments" rename to "stg_payments__dbt_backup"
+[0m20:01:24.881146 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:24.923703 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:01:24.939911 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:24.944249 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:01:24.951146 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_customers"} */
+alter table "db"."public_staging"."stg_customers__dbt_tmp" rename to "stg_customers"
+[0m20:01:24.963941 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:01:24.972610 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_sessions"} */
+alter table "db"."public_staging"."stg_sessions__dbt_tmp" rename to "stg_sessions"
+[0m20:01:24.991284 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:25.000852 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_payments"} */
+alter table "db"."public_staging"."stg_payments__dbt_tmp" rename to "stg_payments"
+[0m20:01:25.006822 [debug] [Thread-3 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:25.056670 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:25.126926 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: COMMIT
+[0m20:01:25.128810 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: COMMIT
+[0m20:01:25.153623 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: COMMIT
+[0m20:01:25.164994 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:01:25.172503 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:01:25.175358 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:01:25.182903 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: COMMIT
+[0m20:01:25.191183 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: COMMIT
+[0m20:01:25.194391 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: COMMIT
+[0m20:01:25.207915 [debug] [Thread-3 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:25.209222 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:25.217798 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:25.246012 [debug] [Thread-3 (]: Applying DROP to: "db"."public_staging"."stg_sessions__dbt_backup"
+[0m20:01:25.264084 [debug] [Thread-1 (]: Applying DROP to: "db"."public_staging"."stg_customers__dbt_backup"
+[0m20:01:25.281792 [debug] [Thread-2 (]: Applying DROP to: "db"."public_staging"."stg_payments__dbt_backup"
+[0m20:01:25.298483 [debug] [Thread-3 (]: Using postgres connection "model.api_bi_project.stg_sessions"
+[0m20:01:25.300631 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.stg_customers"
+[0m20:01:25.305125 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.stg_payments"
+[0m20:01:25.307977 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_sessions"} */
+drop view if exists "db"."public_staging"."stg_sessions__dbt_backup" cascade
+[0m20:01:25.309668 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_customers"} */
+drop view if exists "db"."public_staging"."stg_customers__dbt_backup" cascade
+[0m20:01:25.311562 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.stg_payments"} */
+drop view if exists "db"."public_staging"."stg_payments__dbt_backup" cascade
+[0m20:01:25.323895 [debug] [Thread-3 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m20:01:25.326549 [debug] [Thread-1 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m20:01:25.334496 [debug] [Thread-2 (]: SQL status: DROP VIEW in 0.0 seconds
+[0m20:01:25.331040 [debug] [Thread-3 (]: On model.api_bi_project.stg_sessions: Close
+[0m20:01:25.338310 [debug] [Thread-1 (]: On model.api_bi_project.stg_customers: Close
+[0m20:01:25.342271 [debug] [Thread-2 (]: On model.api_bi_project.stg_payments: Close
+[0m20:01:25.349429 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a24c7b10>]}
+[0m20:01:25.353384 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a06c7690>]}
+[0m20:01:25.356158 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a24c7ad0>]}
+[0m20:01:25.359143 [info ] [Thread-3 (]: 3 of 17 OK created sql view model public_staging.stg_sessions .................. [[32mCREATE VIEW[0m in 0.95s]
+[0m20:01:25.364260 [info ] [Thread-1 (]: 1 of 17 OK created sql view model public_staging.stg_customers ................. [[32mCREATE VIEW[0m in 0.96s]
+[0m20:01:25.367119 [info ] [Thread-2 (]: 2 of 17 OK created sql view model public_staging.stg_payments .................. [[32mCREATE VIEW[0m in 0.97s]
+[0m20:01:25.372095 [debug] [Thread-3 (]: Finished running node model.api_bi_project.stg_sessions
+[0m20:01:25.374614 [debug] [Thread-1 (]: Finished running node model.api_bi_project.stg_customers
+[0m20:01:25.376486 [debug] [Thread-2 (]: Finished running node model.api_bi_project.stg_payments
+[0m20:01:25.383661 [debug] [Thread-4 (]: Began running node test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab
+[0m20:01:25.385366 [debug] [Thread-3 (]: Began running node test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d
+[0m20:01:25.390168 [debug] [Thread-1 (]: Began running node test.api_bi_project.unique_stg_sessions_session_id.ce45726d03
+[0m20:01:25.392757 [debug] [Thread-2 (]: Began running node test.api_bi_project.not_null_stg_customers_country.c13d2cd104
+[0m20:01:25.394743 [info ] [Thread-4 (]: 4 of 17 START test accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing  [RUN]
+[0m20:01:25.400379 [info ] [Thread-3 (]: 5 of 17 START test not_null_stg_sessions_session_id ............................ [RUN]
+[0m20:01:25.402693 [info ] [Thread-1 (]: 6 of 17 START test unique_stg_sessions_session_id .............................. [RUN]
+[0m20:01:25.405778 [info ] [Thread-2 (]: 7 of 17 START test not_null_stg_customers_country .............................. [RUN]
+[0m20:01:25.408923 [debug] [Thread-4 (]: Acquiring new postgres connection 'test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab'
+[0m20:01:25.411137 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.api_bi_project.stg_sessions, now test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d)
+[0m20:01:25.413369 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly model.api_bi_project.stg_customers, now test.api_bi_project.unique_stg_sessions_session_id.ce45726d03)
+[0m20:01:25.416530 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.api_bi_project.stg_payments, now test.api_bi_project.not_null_stg_customers_country.c13d2cd104)
+[0m20:01:25.418804 [debug] [Thread-4 (]: Began compiling node test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab
+[0m20:01:25.420763 [debug] [Thread-3 (]: Began compiling node test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d
+[0m20:01:25.422519 [debug] [Thread-1 (]: Began compiling node test.api_bi_project.unique_stg_sessions_session_id.ce45726d03
+[0m20:01:25.425466 [debug] [Thread-2 (]: Began compiling node test.api_bi_project.not_null_stg_customers_country.c13d2cd104
+[0m20:01:25.494156 [debug] [Thread-4 (]: Writing injected SQL for node "test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab"
+[0m20:01:25.504810 [debug] [Thread-3 (]: Writing injected SQL for node "test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d"
+[0m20:01:25.869062 [debug] [Thread-1 (]: Writing injected SQL for node "test.api_bi_project.unique_stg_sessions_session_id.ce45726d03"
+[0m20:01:25.878075 [debug] [Thread-2 (]: Writing injected SQL for node "test.api_bi_project.not_null_stg_customers_country.c13d2cd104"
+[0m20:01:25.906803 [debug] [Thread-4 (]: Began executing node test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab
+[0m20:01:25.934571 [debug] [Thread-4 (]: Writing runtime sql for node "test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab"
+[0m20:01:25.937149 [debug] [Thread-1 (]: Began executing node test.api_bi_project.unique_stg_sessions_session_id.ce45726d03
+[0m20:01:25.938830 [debug] [Thread-3 (]: Began executing node test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d
+[0m20:01:25.946477 [debug] [Thread-2 (]: Began executing node test.api_bi_project.not_null_stg_customers_country.c13d2cd104
+[0m20:01:25.948379 [debug] [Thread-1 (]: Writing runtime sql for node "test.api_bi_project.unique_stg_sessions_session_id.ce45726d03"
+[0m20:01:25.952697 [debug] [Thread-3 (]: Writing runtime sql for node "test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d"
+[0m20:01:25.958522 [debug] [Thread-2 (]: Writing runtime sql for node "test.api_bi_project.not_null_stg_customers_country.c13d2cd104"
+[0m20:01:25.979125 [debug] [Thread-3 (]: Using postgres connection "test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d"
+[0m20:01:25.980310 [debug] [Thread-1 (]: Using postgres connection "test.api_bi_project.unique_stg_sessions_session_id.ce45726d03"
+[0m20:01:25.982136 [debug] [Thread-3 (]: On test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d: BEGIN
+[0m20:01:25.985157 [debug] [Thread-2 (]: Using postgres connection "test.api_bi_project.not_null_stg_customers_country.c13d2cd104"
+[0m20:01:25.986075 [debug] [Thread-1 (]: On test.api_bi_project.unique_stg_sessions_session_id.ce45726d03: BEGIN
+[0m20:01:25.988103 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m20:01:25.990020 [debug] [Thread-4 (]: Using postgres connection "test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab"
+[0m20:01:25.990850 [debug] [Thread-2 (]: On test.api_bi_project.not_null_stg_customers_country.c13d2cd104: BEGIN
+[0m20:01:25.993435 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:01:25.997601 [debug] [Thread-4 (]: On test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab: BEGIN
+[0m20:01:26.000012 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m20:01:26.007319 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m20:01:26.012191 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.022052 [debug] [Thread-3 (]: Using postgres connection "test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d"
+[0m20:01:26.024844 [debug] [Thread-3 (]: On test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select session_id
+from "db"."public_staging"."stg_sessions"
+where session_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.027481 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.038507 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.040164 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.044624 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.045951 [debug] [Thread-1 (]: Using postgres connection "test.api_bi_project.unique_stg_sessions_session_id.ce45726d03"
+[0m20:01:26.050767 [debug] [Thread-2 (]: Using postgres connection "test.api_bi_project.not_null_stg_customers_country.c13d2cd104"
+[0m20:01:26.052727 [debug] [Thread-4 (]: Using postgres connection "test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab"
+[0m20:01:26.062401 [debug] [Thread-3 (]: On test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d: ROLLBACK
+[0m20:01:26.064270 [debug] [Thread-1 (]: On test.api_bi_project.unique_stg_sessions_session_id.ce45726d03: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.unique_stg_sessions_session_id.ce45726d03"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    session_id as unique_field,
+    count(*) as n_records
+
+from "db"."public_staging"."stg_sessions"
+where session_id is not null
+group by session_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.067031 [debug] [Thread-2 (]: On test.api_bi_project.not_null_stg_customers_country.c13d2cd104: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.not_null_stg_customers_country.c13d2cd104"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select country
+from "db"."public_staging"."stg_customers"
+where country is null
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.069105 [debug] [Thread-4 (]: On test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        source as value_field,
+        count(*) as n_records
+
+    from "db"."public_staging"."stg_sessions"
+    group by source
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'google','direct','facebook','linkedin','newsletter','referral','bing'
+)
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.071050 [debug] [Thread-3 (]: On test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d: Close
+[0m20:01:26.076644 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.081513 [info ] [Thread-3 (]: 5 of 17 PASS not_null_stg_sessions_session_id .................................. [[32mPASS[0m in 0.67s]
+[0m20:01:26.088538 [debug] [Thread-2 (]: On test.api_bi_project.not_null_stg_customers_country.c13d2cd104: ROLLBACK
+[0m20:01:26.090282 [debug] [Thread-3 (]: Finished running node test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d
+[0m20:01:26.093528 [debug] [Thread-2 (]: On test.api_bi_project.not_null_stg_customers_country.c13d2cd104: Close
+[0m20:01:26.095277 [debug] [Thread-3 (]: Began running node test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa
+[0m20:01:26.097248 [info ] [Thread-2 (]: 7 of 17 PASS not_null_stg_customers_country .................................... [[32mPASS[0m in 0.68s]
+[0m20:01:26.098691 [info ] [Thread-3 (]: 8 of 17 START test not_null_stg_customers_customer_id .......................... [RUN]
+[0m20:01:26.100006 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.103937 [debug] [Thread-2 (]: Finished running node test.api_bi_project.not_null_stg_customers_country.c13d2cd104
+[0m20:01:26.105777 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.api_bi_project.not_null_stg_sessions_session_id.2e872a126d, now test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa)
+[0m20:01:26.108750 [debug] [Thread-4 (]: On test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab: ROLLBACK
+[0m20:01:26.110582 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.111988 [debug] [Thread-2 (]: Began running node test.api_bi_project.unique_stg_customers_customer_id.c7614daada
+[0m20:01:26.113859 [debug] [Thread-3 (]: Began compiling node test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa
+[0m20:01:26.115916 [debug] [Thread-4 (]: On test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab: Close
+[0m20:01:26.117887 [debug] [Thread-1 (]: On test.api_bi_project.unique_stg_sessions_session_id.ce45726d03: ROLLBACK
+[0m20:01:26.120048 [info ] [Thread-2 (]: 9 of 17 START test unique_stg_customers_customer_id ............................ [RUN]
+[0m20:01:26.130114 [debug] [Thread-3 (]: Writing injected SQL for node "test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa"
+[0m20:01:26.132364 [info ] [Thread-4 (]: 4 of 17 PASS accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing  [[32mPASS[0m in 0.72s]
+[0m20:01:26.134272 [debug] [Thread-1 (]: On test.api_bi_project.unique_stg_sessions_session_id.ce45726d03: Close
+[0m20:01:26.135830 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.api_bi_project.not_null_stg_customers_country.c13d2cd104, now test.api_bi_project.unique_stg_customers_customer_id.c7614daada)
+[0m20:01:26.140825 [debug] [Thread-4 (]: Finished running node test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab
+[0m20:01:26.143512 [info ] [Thread-1 (]: 6 of 17 PASS unique_stg_sessions_session_id .................................... [[32mPASS[0m in 0.73s]
+[0m20:01:26.146167 [debug] [Thread-2 (]: Began compiling node test.api_bi_project.unique_stg_customers_customer_id.c7614daada
+[0m20:01:26.149906 [debug] [Thread-4 (]: Began running node test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4
+[0m20:01:26.152126 [debug] [Thread-1 (]: Finished running node test.api_bi_project.unique_stg_sessions_session_id.ce45726d03
+[0m20:01:26.160836 [debug] [Thread-2 (]: Writing injected SQL for node "test.api_bi_project.unique_stg_customers_customer_id.c7614daada"
+[0m20:01:26.162548 [info ] [Thread-4 (]: 10 of 17 START test accepted_values_stg_payments_status__succeeded__failed__refunded  [RUN]
+[0m20:01:26.164774 [debug] [Thread-1 (]: Began running node test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075
+[0m20:01:26.168424 [debug] [Thread-3 (]: Began executing node test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa
+[0m20:01:26.170309 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.api_bi_project.accepted_values_stg_sessions_source__google__direct__facebook__linkedin__newsletter__referral__bing.b8cbc1dfab, now test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4)
+[0m20:01:26.172435 [info ] [Thread-1 (]: 11 of 17 START test not_null_stg_payments_payment_id ........................... [RUN]
+[0m20:01:26.178924 [debug] [Thread-3 (]: Writing runtime sql for node "test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa"
+[0m20:01:26.180920 [debug] [Thread-4 (]: Began compiling node test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4
+[0m20:01:26.182737 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.api_bi_project.unique_stg_sessions_session_id.ce45726d03, now test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075)
+[0m20:01:26.198763 [debug] [Thread-4 (]: Writing injected SQL for node "test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4"
+[0m20:01:26.200921 [debug] [Thread-1 (]: Began compiling node test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075
+[0m20:01:26.205009 [debug] [Thread-2 (]: Began executing node test.api_bi_project.unique_stg_customers_customer_id.c7614daada
+[0m20:01:26.225343 [debug] [Thread-1 (]: Writing injected SQL for node "test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075"
+[0m20:01:26.234887 [debug] [Thread-3 (]: Using postgres connection "test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa"
+[0m20:01:26.234158 [debug] [Thread-2 (]: Writing runtime sql for node "test.api_bi_project.unique_stg_customers_customer_id.c7614daada"
+[0m20:01:26.238225 [debug] [Thread-3 (]: On test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa: BEGIN
+[0m20:01:26.244493 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m20:01:26.247998 [debug] [Thread-4 (]: Began executing node test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4
+[0m20:01:26.260286 [debug] [Thread-4 (]: Writing runtime sql for node "test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4"
+[0m20:01:26.269716 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.274265 [debug] [Thread-1 (]: Began executing node test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075
+[0m20:01:26.280972 [debug] [Thread-3 (]: Using postgres connection "test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa"
+[0m20:01:26.291153 [debug] [Thread-1 (]: Writing runtime sql for node "test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075"
+[0m20:01:26.293465 [debug] [Thread-3 (]: On test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select customer_id
+from "db"."public_staging"."stg_customers"
+where customer_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.294860 [debug] [Thread-2 (]: Using postgres connection "test.api_bi_project.unique_stg_customers_customer_id.c7614daada"
+[0m20:01:26.299795 [debug] [Thread-2 (]: On test.api_bi_project.unique_stg_customers_customer_id.c7614daada: BEGIN
+[0m20:01:26.301729 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.302922 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m20:01:26.309752 [debug] [Thread-3 (]: On test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa: ROLLBACK
+[0m20:01:26.314685 [debug] [Thread-4 (]: Using postgres connection "test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4"
+[0m20:01:26.316429 [debug] [Thread-3 (]: On test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa: Close
+[0m20:01:26.318375 [debug] [Thread-4 (]: On test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4: BEGIN
+[0m20:01:26.321524 [info ] [Thread-3 (]: 8 of 17 PASS not_null_stg_customers_customer_id ................................ [[32mPASS[0m in 0.22s]
+[0m20:01:26.325051 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m20:01:26.328524 [debug] [Thread-1 (]: Using postgres connection "test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075"
+[0m20:01:26.329608 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.331157 [debug] [Thread-3 (]: Finished running node test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa
+[0m20:01:26.334660 [debug] [Thread-1 (]: On test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075: BEGIN
+[0m20:01:26.336780 [debug] [Thread-2 (]: Using postgres connection "test.api_bi_project.unique_stg_customers_customer_id.c7614daada"
+[0m20:01:26.339689 [debug] [Thread-3 (]: Began running node test.api_bi_project.unique_stg_payments_payment_id.3744510712
+[0m20:01:26.342342 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:01:26.343924 [debug] [Thread-2 (]: On test.api_bi_project.unique_stg_customers_customer_id.c7614daada: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.unique_stg_customers_customer_id.c7614daada"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    customer_id as unique_field,
+    count(*) as n_records
+
+from "db"."public_staging"."stg_customers"
+where customer_id is not null
+group by customer_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.345358 [info ] [Thread-3 (]: 12 of 17 START test unique_stg_payments_payment_id ............................. [RUN]
+[0m20:01:26.348495 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.351283 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.api_bi_project.not_null_stg_customers_customer_id.e2cfb1f9aa, now test.api_bi_project.unique_stg_payments_payment_id.3744510712)
+[0m20:01:26.353027 [debug] [Thread-4 (]: Using postgres connection "test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4"
+[0m20:01:26.354188 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.355083 [debug] [Thread-3 (]: Began compiling node test.api_bi_project.unique_stg_payments_payment_id.3744510712
+[0m20:01:26.357093 [debug] [Thread-4 (]: On test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+with all_values as (
+
+    select
+        status as value_field,
+        count(*) as n_records
+
+    from "db"."public_staging"."stg_payments"
+    group by status
+
+)
+
+select *
+from all_values
+where value_field not in (
+    'succeeded','failed','refunded'
+)
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.360846 [debug] [Thread-2 (]: On test.api_bi_project.unique_stg_customers_customer_id.c7614daada: ROLLBACK
+[0m20:01:26.362391 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.370285 [debug] [Thread-3 (]: Writing injected SQL for node "test.api_bi_project.unique_stg_payments_payment_id.3744510712"
+[0m20:01:26.373823 [debug] [Thread-2 (]: On test.api_bi_project.unique_stg_customers_customer_id.c7614daada: Close
+[0m20:01:26.375315 [debug] [Thread-1 (]: Using postgres connection "test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075"
+[0m20:01:26.379655 [debug] [Thread-4 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.378959 [info ] [Thread-2 (]: 9 of 17 PASS unique_stg_customers_customer_id .................................. [[32mPASS[0m in 0.24s]
+[0m20:01:26.383237 [debug] [Thread-1 (]: On test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select payment_id
+from "db"."public_staging"."stg_payments"
+where payment_id is null
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.388316 [debug] [Thread-4 (]: On test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4: ROLLBACK
+[0m20:01:26.390748 [debug] [Thread-2 (]: Finished running node test.api_bi_project.unique_stg_customers_customer_id.c7614daada
+[0m20:01:26.393711 [debug] [Thread-4 (]: On test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4: Close
+[0m20:01:26.395787 [debug] [Thread-2 (]: Began running node model.api_bi_project.fct_marketing_attribution
+[0m20:01:26.396780 [debug] [Thread-1 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.399279 [info ] [Thread-4 (]: 10 of 17 PASS accepted_values_stg_payments_status__succeeded__failed__refunded . [[32mPASS[0m in 0.23s]
+[0m20:01:26.404809 [info ] [Thread-2 (]: 13 of 17 START sql table model public_analytics.fct_marketing_attribution ...... [RUN]
+[0m20:01:26.409762 [debug] [Thread-1 (]: On test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075: ROLLBACK
+[0m20:01:26.410733 [debug] [Thread-3 (]: Began executing node test.api_bi_project.unique_stg_payments_payment_id.3744510712
+[0m20:01:26.412190 [debug] [Thread-4 (]: Finished running node test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4
+[0m20:01:26.414293 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly test.api_bi_project.unique_stg_customers_customer_id.c7614daada, now model.api_bi_project.fct_marketing_attribution)
+[0m20:01:26.416464 [debug] [Thread-1 (]: On test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075: Close
+[0m20:01:26.420769 [debug] [Thread-3 (]: Writing runtime sql for node "test.api_bi_project.unique_stg_payments_payment_id.3744510712"
+[0m20:01:26.422804 [debug] [Thread-4 (]: Began running node model.api_bi_project.dim_customer
+[0m20:01:26.424466 [debug] [Thread-2 (]: Began compiling node model.api_bi_project.fct_marketing_attribution
+[0m20:01:26.426352 [info ] [Thread-1 (]: 11 of 17 PASS not_null_stg_payments_payment_id ................................. [[32mPASS[0m in 0.24s]
+[0m20:01:26.429482 [info ] [Thread-4 (]: 14 of 17 START sql table model public_analytics.dim_customer ................... [RUN]
+[0m20:01:26.436370 [debug] [Thread-2 (]: Writing injected SQL for node "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:26.438136 [debug] [Thread-1 (]: Finished running node test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075
+[0m20:01:26.439491 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly test.api_bi_project.accepted_values_stg_payments_status__succeeded__failed__refunded.5b10b937d4, now model.api_bi_project.dim_customer)
+[0m20:01:26.444172 [debug] [Thread-4 (]: Began compiling node model.api_bi_project.dim_customer
+[0m20:01:26.450440 [debug] [Thread-4 (]: Writing injected SQL for node "model.api_bi_project.dim_customer"
+[0m20:01:26.453022 [debug] [Thread-2 (]: Began executing node model.api_bi_project.fct_marketing_attribution
+[0m20:01:26.473313 [debug] [Thread-3 (]: Using postgres connection "test.api_bi_project.unique_stg_payments_payment_id.3744510712"
+[0m20:01:26.499519 [debug] [Thread-2 (]: Writing runtime sql for node "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:26.500207 [debug] [Thread-3 (]: On test.api_bi_project.unique_stg_payments_payment_id.3744510712: BEGIN
+[0m20:01:26.500690 [debug] [Thread-4 (]: Began executing node model.api_bi_project.dim_customer
+[0m20:01:26.503324 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m20:01:26.512829 [debug] [Thread-4 (]: Writing runtime sql for node "model.api_bi_project.dim_customer"
+[0m20:01:26.518669 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:26.521096 [debug] [Thread-2 (]: On model.api_bi_project.fct_marketing_attribution: BEGIN
+[0m20:01:26.522241 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:26.523869 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m20:01:26.525199 [debug] [Thread-4 (]: On model.api_bi_project.dim_customer: BEGIN
+[0m20:01:26.528585 [debug] [Thread-4 (]: Opening a new connection, currently in state closed
+[0m20:01:26.530343 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.534117 [debug] [Thread-3 (]: Using postgres connection "test.api_bi_project.unique_stg_payments_payment_id.3744510712"
+[0m20:01:26.537866 [debug] [Thread-3 (]: On test.api_bi_project.unique_stg_payments_payment_id.3744510712: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.unique_stg_payments_payment_id.3744510712"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+select
+    payment_id as unique_field,
+    count(*) as n_records
+
+from "db"."public_staging"."stg_payments"
+where payment_id is not null
+group by payment_id
+having count(*) > 1
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.541792 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.544209 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:26.548361 [debug] [Thread-4 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.549468 [debug] [Thread-2 (]: On model.api_bi_project.fct_marketing_attribution: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_marketing_attribution"} */
+
+  
+    
+
+  create  table "db"."public_analytics"."fct_marketing_attribution__dbt_tmp"
+  
+  
+    as
+  
+  (
+    with s as (
+  select * from "db"."public_staging"."stg_sessions"
+)
+select
+  session_day,
+  source,
+  medium,
+  coalesce(campaign,'') as campaign,
+  sum(converted::int) as conversions,
+  avg((not bounced)::int)::float as engagement_rate
+from s
+group by 1,2,3,4
+  );
+  
+[0m20:01:26.552331 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:26.557331 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.561609 [debug] [Thread-4 (]: On model.api_bi_project.dim_customer: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.dim_customer"} */
+
+  
+    
+
+  create  table "db"."public_analytics"."dim_customer__dbt_tmp"
+  
+  
+    as
+  
+  (
+    with c as (
+  select * from "db"."public_staging"."stg_customers"
+)
+select
+  customer_id,
+  company_name,
+  country,
+  industry,
+  company_size,
+  signup_date,
+  is_churned,
+  signup_month
+from c
+  );
+  
+[0m20:01:26.565204 [debug] [Thread-3 (]: On test.api_bi_project.unique_stg_payments_payment_id.3744510712: ROLLBACK
+[0m20:01:26.568046 [debug] [Thread-3 (]: On test.api_bi_project.unique_stg_payments_payment_id.3744510712: Close
+[0m20:01:26.570579 [info ] [Thread-3 (]: 12 of 17 PASS unique_stg_payments_payment_id ................................... [[32mPASS[0m in 0.22s]
+[0m20:01:26.573451 [debug] [Thread-3 (]: Finished running node test.api_bi_project.unique_stg_payments_payment_id.3744510712
+[0m20:01:26.576010 [debug] [Thread-1 (]: Began running node model.api_bi_project.fct_revenue_daily
+[0m20:01:26.582411 [debug] [Thread-4 (]: SQL status: SELECT 1000 in 0.0 seconds
+[0m20:01:26.581565 [info ] [Thread-1 (]: 15 of 17 START sql table model public_analytics.fct_revenue_daily .............. [RUN]
+[0m20:01:26.589073 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:26.590621 [debug] [Thread-1 (]: Re-using an available connection from the pool (formerly test.api_bi_project.not_null_stg_payments_payment_id.c19cc50075, now model.api_bi_project.fct_revenue_daily)
+[0m20:01:26.592357 [debug] [Thread-4 (]: On model.api_bi_project.dim_customer: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.dim_customer"} */
+alter table "db"."public_analytics"."dim_customer" rename to "dim_customer__dbt_backup"
+[0m20:01:26.595708 [debug] [Thread-1 (]: Began compiling node model.api_bi_project.fct_revenue_daily
+[0m20:01:26.600100 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:26.604498 [debug] [Thread-1 (]: Writing injected SQL for node "model.api_bi_project.fct_revenue_daily"
+[0m20:01:26.614843 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:26.618961 [debug] [Thread-4 (]: On model.api_bi_project.dim_customer: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.dim_customer"} */
+alter table "db"."public_analytics"."dim_customer__dbt_tmp" rename to "dim_customer"
+[0m20:01:26.621338 [debug] [Thread-4 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:26.633018 [debug] [Thread-4 (]: On model.api_bi_project.dim_customer: COMMIT
+[0m20:01:26.635218 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:26.636492 [debug] [Thread-1 (]: Began executing node model.api_bi_project.fct_revenue_daily
+[0m20:01:26.637546 [debug] [Thread-4 (]: On model.api_bi_project.dim_customer: COMMIT
+[0m20:01:26.645489 [debug] [Thread-1 (]: Writing runtime sql for node "model.api_bi_project.fct_revenue_daily"
+[0m20:01:26.649915 [debug] [Thread-4 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:26.655174 [debug] [Thread-4 (]: Applying DROP to: "db"."public_analytics"."dim_customer__dbt_backup"
+[0m20:01:26.668011 [debug] [Thread-4 (]: Using postgres connection "model.api_bi_project.dim_customer"
+[0m20:01:26.668698 [debug] [Thread-2 (]: SQL status: SELECT 5698 in 0.0 seconds
+[0m20:01:26.670479 [debug] [Thread-4 (]: On model.api_bi_project.dim_customer: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.dim_customer"} */
+drop table if exists "db"."public_analytics"."dim_customer__dbt_backup" cascade
+[0m20:01:26.671574 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:26.678265 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:26.686209 [debug] [Thread-1 (]: On model.api_bi_project.fct_revenue_daily: BEGIN
+[0m20:01:26.691925 [debug] [Thread-2 (]: On model.api_bi_project.fct_marketing_attribution: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_marketing_attribution"} */
+alter table "db"."public_analytics"."fct_marketing_attribution" rename to "fct_marketing_attribution__dbt_backup"
+[0m20:01:26.694879 [debug] [Thread-4 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m20:01:26.698124 [debug] [Thread-1 (]: Opening a new connection, currently in state closed
+[0m20:01:26.702674 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:26.705569 [debug] [Thread-4 (]: On model.api_bi_project.dim_customer: Close
+[0m20:01:26.717128 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:26.721814 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78609f28fd50>]}
+[0m20:01:26.723681 [debug] [Thread-2 (]: On model.api_bi_project.fct_marketing_attribution: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_marketing_attribution"} */
+alter table "db"."public_analytics"."fct_marketing_attribution__dbt_tmp" rename to "fct_marketing_attribution"
+[0m20:01:26.726573 [debug] [Thread-1 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.728569 [info ] [Thread-4 (]: 14 of 17 OK created sql table model public_analytics.dim_customer .............. [[32mSELECT 1000[0m in 0.28s]
+[0m20:01:26.731296 [debug] [Thread-2 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:26.733763 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:26.736284 [debug] [Thread-4 (]: Finished running node model.api_bi_project.dim_customer
+[0m20:01:26.740004 [debug] [Thread-2 (]: On model.api_bi_project.fct_marketing_attribution: COMMIT
+[0m20:01:26.741455 [debug] [Thread-1 (]: On model.api_bi_project.fct_revenue_daily: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_revenue_daily"} */
+
+  
+    
+
+  create  table "db"."public_analytics"."fct_revenue_daily__dbt_tmp"
+  
+  
+    as
+  
+  (
+    with p as (
+  select * from "db"."public_staging"."stg_payments"
+)
+select
+  order_day,
+  product,
+  country,
+  sum(net_revenue) as net_revenue,
+  count(*) as orders
+from p
+group by 1,2,3
+  );
+  
+[0m20:01:26.744182 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:26.746133 [debug] [Thread-2 (]: On model.api_bi_project.fct_marketing_attribution: COMMIT
+[0m20:01:26.749836 [debug] [Thread-2 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:26.758431 [debug] [Thread-2 (]: Applying DROP to: "db"."public_analytics"."fct_marketing_attribution__dbt_backup"
+[0m20:01:26.762152 [debug] [Thread-2 (]: Using postgres connection "model.api_bi_project.fct_marketing_attribution"
+[0m20:01:26.763687 [debug] [Thread-2 (]: On model.api_bi_project.fct_marketing_attribution: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_marketing_attribution"} */
+drop table if exists "db"."public_analytics"."fct_marketing_attribution__dbt_backup" cascade
+[0m20:01:26.769656 [debug] [Thread-2 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m20:01:26.773114 [debug] [Thread-2 (]: On model.api_bi_project.fct_marketing_attribution: Close
+[0m20:01:26.775132 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a0acd6d0>]}
+[0m20:01:26.779795 [info ] [Thread-2 (]: 13 of 17 OK created sql table model public_analytics.fct_marketing_attribution . [[32mSELECT 5698[0m in 0.36s]
+[0m20:01:26.782014 [debug] [Thread-2 (]: Finished running node model.api_bi_project.fct_marketing_attribution
+[0m20:01:26.784408 [debug] [Thread-3 (]: Began running node test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e
+[0m20:01:26.785675 [info ] [Thread-3 (]: 16 of 17 START test not_null_fct_marketing_attribution_session_day ............. [RUN]
+[0m20:01:26.787132 [debug] [Thread-1 (]: SQL status: SELECT 4336 in 0.0 seconds
+[0m20:01:26.788191 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly test.api_bi_project.unique_stg_payments_payment_id.3744510712, now test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e)
+[0m20:01:26.793855 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:26.795196 [debug] [Thread-3 (]: Began compiling node test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e
+[0m20:01:26.796634 [debug] [Thread-1 (]: On model.api_bi_project.fct_revenue_daily: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_revenue_daily"} */
+alter table "db"."public_analytics"."fct_revenue_daily" rename to "fct_revenue_daily__dbt_backup"
+[0m20:01:26.806669 [debug] [Thread-3 (]: Writing injected SQL for node "test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e"
+[0m20:01:26.809147 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:26.814602 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:26.816182 [debug] [Thread-1 (]: On model.api_bi_project.fct_revenue_daily: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_revenue_daily"} */
+alter table "db"."public_analytics"."fct_revenue_daily__dbt_tmp" rename to "fct_revenue_daily"
+[0m20:01:26.819174 [debug] [Thread-1 (]: SQL status: ALTER TABLE in 0.0 seconds
+[0m20:01:26.822426 [debug] [Thread-1 (]: On model.api_bi_project.fct_revenue_daily: COMMIT
+[0m20:01:26.824003 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:26.825260 [debug] [Thread-1 (]: On model.api_bi_project.fct_revenue_daily: COMMIT
+[0m20:01:26.832747 [debug] [Thread-3 (]: Began executing node test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e
+[0m20:01:26.837761 [debug] [Thread-3 (]: Writing runtime sql for node "test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e"
+[0m20:01:26.838354 [debug] [Thread-1 (]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:26.844363 [debug] [Thread-1 (]: Applying DROP to: "db"."public_analytics"."fct_revenue_daily__dbt_backup"
+[0m20:01:26.847011 [debug] [Thread-1 (]: Using postgres connection "model.api_bi_project.fct_revenue_daily"
+[0m20:01:26.848754 [debug] [Thread-1 (]: On model.api_bi_project.fct_revenue_daily: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "model.api_bi_project.fct_revenue_daily"} */
+drop table if exists "db"."public_analytics"."fct_revenue_daily__dbt_backup" cascade
+[0m20:01:26.853912 [debug] [Thread-1 (]: SQL status: DROP TABLE in 0.0 seconds
+[0m20:01:26.858013 [debug] [Thread-1 (]: On model.api_bi_project.fct_revenue_daily: Close
+[0m20:01:26.860211 [debug] [Thread-1 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '7ea13914-85a5-44fd-9802-7ff88c52f438', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x78609f45ba90>]}
+[0m20:01:26.863272 [info ] [Thread-1 (]: 15 of 17 OK created sql table model public_analytics.fct_revenue_daily ......... [[32mSELECT 4336[0m in 0.27s]
+[0m20:01:26.866634 [debug] [Thread-1 (]: Finished running node model.api_bi_project.fct_revenue_daily
+[0m20:01:26.867805 [debug] [Thread-3 (]: Using postgres connection "test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e"
+[0m20:01:26.870758 [debug] [Thread-2 (]: Began running node test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da
+[0m20:01:26.872372 [debug] [Thread-3 (]: On test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e: BEGIN
+[0m20:01:26.874085 [info ] [Thread-2 (]: 17 of 17 START test not_null_fct_revenue_daily_order_day ....................... [RUN]
+[0m20:01:26.875908 [debug] [Thread-3 (]: Opening a new connection, currently in state closed
+[0m20:01:26.877627 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.api_bi_project.fct_marketing_attribution, now test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da)
+[0m20:01:26.881529 [debug] [Thread-2 (]: Began compiling node test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da
+[0m20:01:26.891953 [debug] [Thread-2 (]: Writing injected SQL for node "test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da"
+[0m20:01:26.896225 [debug] [Thread-3 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.898236 [debug] [Thread-3 (]: Using postgres connection "test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e"
+[0m20:01:26.900308 [debug] [Thread-3 (]: On test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select session_day
+from "db"."public_analytics"."fct_marketing_attribution"
+where session_day is null
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.904724 [debug] [Thread-3 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.908642 [debug] [Thread-3 (]: On test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e: ROLLBACK
+[0m20:01:26.910616 [debug] [Thread-3 (]: On test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e: Close
+[0m20:01:26.912292 [info ] [Thread-3 (]: 16 of 17 PASS not_null_fct_marketing_attribution_session_day ................... [[32mPASS[0m in 0.12s]
+[0m20:01:26.914248 [debug] [Thread-3 (]: Finished running node test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e
+[0m20:01:26.918988 [debug] [Thread-2 (]: Began executing node test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da
+[0m20:01:26.923668 [debug] [Thread-2 (]: Writing runtime sql for node "test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da"
+[0m20:01:26.945716 [debug] [Thread-2 (]: Using postgres connection "test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da"
+[0m20:01:26.947164 [debug] [Thread-2 (]: On test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da: BEGIN
+[0m20:01:26.948225 [debug] [Thread-2 (]: Opening a new connection, currently in state closed
+[0m20:01:26.961003 [debug] [Thread-2 (]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.963346 [debug] [Thread-2 (]: Using postgres connection "test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da"
+[0m20:01:26.965212 [debug] [Thread-2 (]: On test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da: /* {"app": "dbt", "dbt_version": "1.8.3", "profile_name": "api_bi_profile", "target_name": "dev", "node_id": "test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da"} */
+select
+      count(*) as failures,
+      count(*) != 0 as should_warn,
+      count(*) != 0 as should_error
+    from (
+      
+    
+    
+
+
+
+select order_day
+from "db"."public_analytics"."fct_revenue_daily"
+where order_day is null
+
+
+
+      
+    ) dbt_internal_test
+[0m20:01:26.969114 [debug] [Thread-2 (]: SQL status: SELECT 1 in 0.0 seconds
+[0m20:01:26.972642 [debug] [Thread-2 (]: On test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da: ROLLBACK
+[0m20:01:26.974114 [debug] [Thread-2 (]: On test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da: Close
+[0m20:01:26.975492 [info ] [Thread-2 (]: 17 of 17 PASS not_null_fct_revenue_daily_order_day ............................. [[32mPASS[0m in 0.10s]
+[0m20:01:26.977553 [debug] [Thread-2 (]: Finished running node test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da
+[0m20:01:26.982313 [debug] [MainThread]: Using postgres connection "master"
+[0m20:01:26.983649 [debug] [MainThread]: On master: BEGIN
+[0m20:01:26.984784 [debug] [MainThread]: Opening a new connection, currently in state closed
+[0m20:01:26.997640 [debug] [MainThread]: SQL status: BEGIN in 0.0 seconds
+[0m20:01:26.999899 [debug] [MainThread]: On master: COMMIT
+[0m20:01:27.001513 [debug] [MainThread]: Using postgres connection "master"
+[0m20:01:27.002915 [debug] [MainThread]: On master: COMMIT
+[0m20:01:27.004828 [debug] [MainThread]: SQL status: COMMIT in 0.0 seconds
+[0m20:01:27.006290 [debug] [MainThread]: On master: Close
+[0m20:01:27.007790 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m20:01:27.009504 [debug] [MainThread]: Connection 'test.api_bi_project.not_null_fct_revenue_daily_order_day.f07ee676da' was properly closed.
+[0m20:01:27.010955 [debug] [MainThread]: Connection 'model.api_bi_project.fct_revenue_daily' was properly closed.
+[0m20:01:27.012560 [debug] [MainThread]: Connection 'test.api_bi_project.not_null_fct_marketing_attribution_session_day.d8b871604e' was properly closed.
+[0m20:01:27.013712 [debug] [MainThread]: Connection 'model.api_bi_project.dim_customer' was properly closed.
+[0m20:01:27.015279 [info ] [MainThread]: 
+[0m20:01:27.016979 [info ] [MainThread]: Finished running 3 view models, 11 data tests, 3 table models in 0 hours 0 minutes and 3.17 seconds (3.17s).
+[0m20:01:27.023524 [debug] [MainThread]: Command end result
+[0m20:01:27.110399 [info ] [MainThread]: 
+[0m20:01:27.112399 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m20:01:27.114299 [info ] [MainThread]: 
+[0m20:01:27.116749 [info ] [MainThread]: Done. PASS=17 WARN=0 ERROR=0 SKIP=0 TOTAL=17
+[0m20:01:27.120580 [debug] [MainThread]: Resource report: {"command_name": "build", "command_success": true, "command_wall_clock_time": 6.294665, "process_user_time": 4.896073, "process_kernel_time": 0.836098, "process_mem_max_rss": "117032", "process_in_blocks": "2648", "process_out_blocks": "0"}
+[0m20:01:27.122959 [debug] [MainThread]: Command `dbt build` succeeded at 20:01:27.122793 after 6.30 seconds
+[0m20:01:27.124577 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a39faf50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a2667f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7860a62d4950>]}
+[0m20:01:27.126445 [debug] [MainThread]: Flushing usage events

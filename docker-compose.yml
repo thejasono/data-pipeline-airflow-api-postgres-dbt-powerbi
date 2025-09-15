@@ -607,20 +607,20 @@ services:
       # Prevents dbt from failing with “connection refused” if DB is still starting.
       # Important for reproducibility in dev.
 
-    entrypoint: ["/bin/bash", "-lc", "dbt deps && dbt run"]
-    # Entry point override.
-    # Normally, a dbt container would exit after finishing its command.
-    # Here we override it:
-    # - `/bin/bash` → run Bash shell inside container.
-    # - `-l`        → make it a login shell (load profile scripts).
-    # - `-c`        → execute the following string as a command.
-    # "dbt deps && dbt run" This is the command we are executing 
-    # - Using YAML list form avoids quoting problems and is clearer than a single string.
-    # With this style, you could set command: dbt deps && dbt run && dbt test
-    # to run dbt automatically when container starts.
-    #
-    # Dev pattern = idle container (tail -f /dev/null).
-    # Prod pattern = scripted container (bash -lc "dbt run && dbt test").
+    entrypoint: ["/bin/bash", "-lc", "dbt deps && dbt run && tail -f /dev/null"]
+      # Entry point override: run dbt deps and dbt run at startup, then keep the container alive.
+      # - `/bin/bash` → start a Bash shell.
+      # - `-l`        → login shell (loads profile scripts).
+      # - `-c`        → execute the following command string:
+      #   "dbt deps && dbt run && tail -f /dev/null"
+      #     - `dbt deps` installs project dependencies.
+      #     - `dbt run` builds models.
+      #     - `tail -f /dev/null` prevents the container from exiting so Airflow or
+      #       other tools can `docker exec` into it later.
+      # Using the YAML list form avoids quoting issues and makes each argument explicit.
+      #
+      # For a production-like run that exits when dbt finishes, remove the `tail -f /dev/null`
+      # segment so the container stops once dbt completes.
 
 
 
