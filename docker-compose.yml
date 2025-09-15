@@ -423,41 +423,36 @@ services:
     # ----------------------------------------------------------------------------
     # Process model — how this container starts Airflow
     #
-    # entrypoint: ["/bin/bash", "-lc"]
-    # - `/bin/bash` → run the Bash shell program inside the container.
-    # - `-l`        → make it a "login shell", so it loads profile scripts.
-    # - `-c`        → tell Bash to execute the following string as a command.
-    # - Written as a YAML list so Docker knows it’s the JSON-array form of entrypoint.
-    #   (clearer than a single string; avoids issues with spaces/quoting).
+    # entrypoint: ["/bin/bash"]
+    # - run the Bash shell bundled in the image.
+    # command:
+    #   - -lc
+    #   - | (multi-line Bash script)
+    #       set -euo pipefail      → stop on errors/undefined vars; make pipelines fail fast.
+    #       airflow db init        → idempotent metadata DB init/upgrade.
+    #       airflow users create   → ensure an admin user exists (ignore "already exists").
+    #       airflow connections …  → replace the default Postgres connection with ours.
+    #       airflow webserver &    → start the web UI in the background.
+    #       exec airflow scheduler → run scheduler in the foreground (PID 1 for clean signals).
     #
-    # Command runs the boot sequence step by step:
-    # 1) `airflow db init` → initialize or upgrade the metadata DB.
-    #    - *Idempotent* means you can run it many times and get the same end state
-    #      (if DB already initialized, it just ensures schema is up to date).
-    # 2) `airflow users create … || true` → create an admin user.
-    #    - `|| true` makes “user already exists” non-fatal and continues execution.
-    # 3) Reset the default connection:
-    #    - `airflow connections delete postgres_default || true`
-    #      → remove built-in `postgres_default`, ignore if it doesn’t exist.
-    #    - `airflow connections add postgres_default --conn-uri "..."`
-    #      → add a new `postgres_default` pointing to our Postgres service.
-    # 4) `airflow webserver & airflow scheduler`
-    #    - start the webserver in the background (&).
-    #    - start the scheduler in the foreground. Scheduler keeps the container alive.
-    #
-    # Typically you’d run webserver and scheduler as separate containers, or under a
-    # process manager. Here they’re combined for dev simplicity.
-    #
-    # Note: admin creds are dev-only. In production rotate them, avoid plain envs,
-    # and consider moving connection setup into init scripts or plugins.
+    # Webserver stays in the background while the scheduler (PID 1) keeps the container alive.
+    # Admin creds/connection reset are dev conveniences; harden/rotate for real deployments.
+    # Using the list form avoids quoting headaches and keeps the boot sequence readable.
+    # 
     # ----------------------------------------------------------------------------
-    # entrypoint: ["/bin/bash", "-lc"]
-    command: |
-      airflow db init && \
-      airflow users create --role Admin --username admin --password admin --firstname Admin --lastname User --email admin@example.com || true && \
-      airflow connections delete postgres_default || true && \
-      airflow connections add postgres_default --conn-uri "postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}" && \
-      airflow webserver & airflow scheduler
+    entrypoint: ["/bin/bash"]
+    command:
+      - -lc
+      - |
+          set -euo pipefail
+
+          airflow db init
+          airflow users create --role Admin --username admin --password admin --firstname Admin --lastname User --email admin@example.com || true
+          airflow connections delete postgres_default || true
+          airflow connections add postgres_default --conn-uri "postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}"
+
+          airflow webserver &
+          exec airflow scheduler
 
     # ----------------------------------------------------------------------------
     # Ports — expose Airflow UI to the outside (TCP by default).
