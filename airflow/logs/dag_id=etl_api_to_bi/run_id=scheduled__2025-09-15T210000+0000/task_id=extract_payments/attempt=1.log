@@ -1,0 +1,38 @@
+[2025-09-15T23:16:10.250+0200] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-09-15T23:16:10.312+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_api_to_bi.extract_payments scheduled__2025-09-15T21:00:00+00:00 [queued]>
+[2025-09-15T23:16:10.328+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_api_to_bi.extract_payments scheduled__2025-09-15T21:00:00+00:00 [queued]>
+[2025-09-15T23:16:10.330+0200] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-09-15T23:16:10.351+0200] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract_payments> on 2025-09-15 21:00:00+00:00
+[2025-09-15T23:16:10.362+0200] {standard_task_runner.py:64} INFO - Started process 232 to run task
+[2025-09-15T23:16:10.368+0200] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'etl_api_to_bi', 'extract_payments', 'scheduled__2025-09-15T21:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/etl_api_to_bi.py', '--cfg-path', '/tmp/tmp97ew67q_']
+[2025-09-15T23:16:10.373+0200] {standard_task_runner.py:91} INFO - Job 2: Subtask extract_payments
+[2025-09-15T23:16:10.528+0200] {task_command.py:426} INFO - Running <TaskInstance: etl_api_to_bi.extract_payments scheduled__2025-09-15T21:00:00+00:00 [running]> on host 57c4c52ce801
+[2025-09-15T23:16:11.747+0200] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data' AIRFLOW_CTX_DAG_ID='etl_api_to_bi' AIRFLOW_CTX_TASK_ID='extract_payments' AIRFLOW_CTX_EXECUTION_DATE='2025-09-15T21:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-15T21:00:00+00:00'
+[2025-09-15T23:16:11.752+0200] {taskinstance.py:430} INFO - ::endgroup::
+[2025-09-15T23:16:12.775+0200] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-09-15T23:16:12.779+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:14.021+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:16.062+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:17.810+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:18.492+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:19.053+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:19.890+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:20.398+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:20.768+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:21.266+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:21.845+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:22.242+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:22.750+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:24.212+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:24.677+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:25.183+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:25.519+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:26.047+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:26.480+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:26.836+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-15T23:16:27.126+0200] {python.py:237} INFO - Done. Returned value was: 10000
+[2025-09-15T23:16:27.127+0200] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-09-15T23:16:27.178+0200] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_api_to_bi, task_id=extract_payments, run_id=scheduled__2025-09-15T21:00:00+00:00, execution_date=20250915T210000, start_date=20250915T211610, end_date=20250915T211627
+[2025-09-15T23:16:27.239+0200] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-09-15T23:16:27.279+0200] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-09-15T23:16:27.282+0200] {local_task_job_runner.py:222} INFO - ::endgroup::
