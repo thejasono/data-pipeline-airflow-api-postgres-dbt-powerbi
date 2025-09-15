@@ -42,8 +42,32 @@ Role of Each Schema (High-Level)
     - Landing zone. Light typing, minimal constraints. Source-of-truth snapshots.
 • public_staging (dbt "staging" layer):
     - Cleaning zone. Type coercion, dedupe, referential integrity checks, surrogates.
+    - Populated by dbt **staging SQL models** in `dbt/models/staging`. When you run dbt,
+      those .sql files are compiled into views such as `public_staging.stg_customers`,
+      `public_staging.stg_payments`, and `public_staging.stg_sessions`.
+    - You do **not** need to create these views manually in the Postgres init scripts;
+      dbt materializes them. Before dbt runs, only the raw tables (`raw.customers`,
+      `raw.payments`, `raw.sessions`) exist. After dbt runs, the staging views appear in
+      addition to the raw tables.
 • public_analytics (dbt "analytics" layer):
     - Presentation/semantic layer for BI. Star/snowflake marts, curated views/tables.
+
+dbt Staging Models: Practical Notes
+-----------------------------------
+• Purpose of staging SQL files: Centralize cleansing/standardization logic so dbt can
+  maintain the staging layer for you.
+• You might not immediately see the `public_staging` schema in a fresh database because
+  its objects are created only once dbt has run. Leave the schema definition in
+  `01_schemas.sql`—it is required for dbt to materialize its views, even if it looks
+  empty at first.
+• If you *really* wanted to create placeholder tables via SQL (e.g., in `01_schemas.sql`),
+  you could, but it is unnecessary. dbt will manage the staging views once executed.
+
+Access Snapshot
+---------------
+• Before running dbt: Raw tables only.
+• After running dbt: Raw tables **plus** the staging views defined in
+  `dbt/models/staging`.
 
 Airflow/dbt/Power BI Flow (Where These Fit)
 -------------------------------------------
