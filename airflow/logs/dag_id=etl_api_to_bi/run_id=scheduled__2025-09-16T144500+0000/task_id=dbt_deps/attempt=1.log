@@ -1,0 +1,74 @@
+[2025-09-16T17:00:21.499+0200] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-09-16T17:00:21.729+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_api_to_bi.dbt_deps scheduled__2025-09-16T14:45:00+00:00 [queued]>
+[2025-09-16T17:00:21.795+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_api_to_bi.dbt_deps scheduled__2025-09-16T14:45:00+00:00 [queued]>
+[2025-09-16T17:00:21.799+0200] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-09-16T17:00:21.887+0200] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_deps> on 2025-09-16 14:45:00+00:00
+[2025-09-16T17:00:21.942+0200] {standard_task_runner.py:64} INFO - Started process 192 to run task
+[2025-09-16T17:00:21.964+0200] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'etl_api_to_bi', 'dbt_deps', 'scheduled__2025-09-16T14:45:00+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/etl_api_to_bi.py', '--cfg-path', '/tmp/tmp2fmbpjfx']
+[2025-09-16T17:00:21.974+0200] {standard_task_runner.py:91} INFO - Job 25: Subtask dbt_deps
+[2025-09-16T17:00:22.412+0200] {task_command.py:426} INFO - Running <TaskInstance: etl_api_to_bi.dbt_deps scheduled__2025-09-16T14:45:00+00:00 [running]> on host 1621268d5064
+[2025-09-16T17:00:24.279+0200] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data' AIRFLOW_CTX_DAG_ID='etl_api_to_bi' AIRFLOW_CTX_TASK_ID='dbt_deps' AIRFLOW_CTX_EXECUTION_DATE='2025-09-16T14:45:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-16T14:45:00+00:00'
+[2025-09-16T17:00:24.306+0200] {taskinstance.py:430} INFO - ::endgroup::
+[2025-09-16T17:00:24.355+0200] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-09-16T17:00:24.379+0200] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', "docker exec dbt bash -lc 'cd /usr/app && dbt deps --profiles-dir /root/.dbt'"]
+[2025-09-16T17:00:24.431+0200] {subprocess.py:86} INFO - Output:
+[2025-09-16T17:00:32.545+0200] {subprocess.py:93} INFO - [0m15:00:32  Running with dbt=1.8.3
+[2025-09-16T17:00:33.833+0200] {subprocess.py:93} INFO - [0m15:00:33  Encountered an error:
+[2025-09-16T17:00:33.837+0200] {subprocess.py:93} INFO - [Errno 2] No such file or directory: 'test_get_column_values_where.sql'
+[2025-09-16T17:00:33.853+0200] {subprocess.py:93} INFO - [0m15:00:33  Traceback (most recent call last):
+[2025-09-16T17:00:33.854+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/site-packages/dbt/cli/requires.py", line 138, in wrapper
+[2025-09-16T17:00:33.856+0200] {subprocess.py:93} INFO -     result, success = func(*args, **kwargs)
+[2025-09-16T17:00:33.857+0200] {subprocess.py:93} INFO -                       ^^^^^^^^^^^^^^^^^^^^^
+[2025-09-16T17:00:33.858+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/site-packages/dbt/cli/requires.py", line 101, in wrapper
+[2025-09-16T17:00:33.862+0200] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2025-09-16T17:00:33.863+0200] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^
+[2025-09-16T17:00:33.864+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/site-packages/dbt/cli/requires.py", line 201, in wrapper
+[2025-09-16T17:00:33.866+0200] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2025-09-16T17:00:33.874+0200] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^
+[2025-09-16T17:00:33.879+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/site-packages/dbt/cli/requires.py", line 247, in wrapper
+[2025-09-16T17:00:33.882+0200] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2025-09-16T17:00:33.885+0200] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^
+[2025-09-16T17:00:33.887+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/site-packages/dbt/cli/main.py", line 447, in deps
+[2025-09-16T17:00:33.888+0200] {subprocess.py:93} INFO -     results = task.run()
+[2025-09-16T17:00:33.890+0200] {subprocess.py:93} INFO -               ^^^^^^^^^^
+[2025-09-16T17:00:33.892+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/site-packages/dbt/task/deps.py", line 233, in run
+[2025-09-16T17:00:33.894+0200] {subprocess.py:93} INFO -     system.rmtree(self.project.packages_install_path)
+[2025-09-16T17:00:33.898+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/site-packages/dbt_common/clients/system.py", line 689, in rmtree
+[2025-09-16T17:00:33.901+0200] {subprocess.py:93} INFO -     return shutil.rmtree(path, onerror=chmod_and_retry)
+[2025-09-16T17:00:33.903+0200] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-09-16T17:00:33.906+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/shutil.py", line 732, in rmtree
+[2025-09-16T17:00:33.910+0200] {subprocess.py:93} INFO -     _rmtree_safe_fd(fd, path, onerror)
+[2025-09-16T17:00:33.913+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/shutil.py", line 660, in _rmtree_safe_fd
+[2025-09-16T17:00:33.914+0200] {subprocess.py:93} INFO -     _rmtree_safe_fd(dirfd, fullname, onerror)
+[2025-09-16T17:00:33.917+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/shutil.py", line 660, in _rmtree_safe_fd
+[2025-09-16T17:00:33.921+0200] {subprocess.py:93} INFO -     _rmtree_safe_fd(dirfd, fullname, onerror)
+[2025-09-16T17:00:33.922+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/shutil.py", line 660, in _rmtree_safe_fd
+[2025-09-16T17:00:33.928+0200] {subprocess.py:93} INFO -     _rmtree_safe_fd(dirfd, fullname, onerror)
+[2025-09-16T17:00:33.931+0200] {subprocess.py:93} INFO -   [Previous line repeated 1 more time]
+[2025-09-16T17:00:33.938+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/shutil.py", line 683, in _rmtree_safe_fd
+[2025-09-16T17:00:33.945+0200] {subprocess.py:93} INFO -     onerror(os.unlink, fullname, sys.exc_info())
+[2025-09-16T17:00:33.947+0200] {subprocess.py:93} INFO -   File "/usr/local/lib/python3.11/shutil.py", line 681, in _rmtree_safe_fd
+[2025-09-16T17:00:33.948+0200] {subprocess.py:93} INFO -     os.unlink(entry.name, dir_fd=topfd)
+[2025-09-16T17:00:33.950+0200] {subprocess.py:93} INFO - FileNotFoundError: [Errno 2] No such file or directory: 'test_get_column_values_where.sql'
+[2025-09-16T17:00:33.951+0200] {subprocess.py:93} INFO - 
+[2025-09-16T17:00:35.302+0200] {subprocess.py:97} INFO - Command exited with return code 2
+[2025-09-16T17:00:35.304+0200] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-09-16T17:00:35.345+0200] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.11/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2025-09-16T17:00:35.362+0200] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=etl_api_to_bi, task_id=dbt_deps, run_id=scheduled__2025-09-16T14:45:00+00:00, execution_date=20250916T144500, start_date=20250916T150021, end_date=20250916T150035
+[2025-09-16T17:00:35.409+0200] {standard_task_runner.py:110} ERROR - Failed to execute job 25 for task dbt_deps (Bash command failed. The command returned a non-zero exit code 2.; 192)
+[2025-09-16T17:00:35.461+0200] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2025-09-16T17:00:35.533+0200] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-09-16T17:00:35.601+0200] {local_task_job_runner.py:222} INFO - ::endgroup::
