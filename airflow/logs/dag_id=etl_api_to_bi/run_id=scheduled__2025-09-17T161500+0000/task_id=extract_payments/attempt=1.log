@@ -1,0 +1,18 @@
+[2025-09-17T18:30:01.391+0200] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-09-17T18:30:01.467+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_api_to_bi.extract_payments scheduled__2025-09-17T16:15:00+00:00 [queued]>
+[2025-09-17T18:30:01.492+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_api_to_bi.extract_payments scheduled__2025-09-17T16:15:00+00:00 [queued]>
+[2025-09-17T18:30:01.494+0200] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-09-17T18:30:01.562+0200] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract_payments> on 2025-09-17 16:15:00+00:00
+[2025-09-17T18:30:01.580+0200] {standard_task_runner.py:64} INFO - Started process 2028 to run task
+[2025-09-17T18:30:01.598+0200] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'etl_api_to_bi', 'extract_payments', 'scheduled__2025-09-17T16:15:00+00:00', '--job-id', '115', '--raw', '--subdir', 'DAGS_FOLDER/etl_api_to_bi.py', '--cfg-path', '/tmp/tmp0fw_005p']
+[2025-09-17T18:30:01.604+0200] {standard_task_runner.py:91} INFO - Job 115: Subtask extract_payments
+[2025-09-17T18:30:01.824+0200] {task_command.py:426} INFO - Running <TaskInstance: etl_api_to_bi.extract_payments scheduled__2025-09-17T16:15:00+00:00 [running]> on host 1621268d5064
+[2025-09-17T18:30:02.660+0200] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data' AIRFLOW_CTX_DAG_ID='etl_api_to_bi' AIRFLOW_CTX_TASK_ID='extract_payments' AIRFLOW_CTX_EXECUTION_DATE='2025-09-17T16:15:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-17T16:15:00+00:00'
+[2025-09-17T18:30:02.661+0200] {taskinstance.py:430} INFO - ::endgroup::
+[2025-09-17T18:30:03.030+0200] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-09-17T18:30:03.033+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-09-17T18:30:03.098+0200] {python.py:237} INFO - Done. Returned value was: 1
+[2025-09-17T18:30:03.101+0200] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-09-17T18:30:03.171+0200] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_api_to_bi, task_id=extract_payments, run_id=scheduled__2025-09-17T16:15:00+00:00, execution_date=20250917T161500, start_date=20250917T163001, end_date=20250917T163003
+[2025-09-17T18:30:03.260+0200] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-09-17T18:30:03.292+0200] {local_task_job_runner.py:222} INFO - ::endgroup::
