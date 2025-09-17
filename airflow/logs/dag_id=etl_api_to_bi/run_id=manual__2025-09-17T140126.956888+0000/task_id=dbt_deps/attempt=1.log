@@ -1,0 +1,24 @@
+[2025-09-17T16:01:33.322+0200] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-09-17T16:01:33.384+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_api_to_bi.dbt_deps manual__2025-09-17T14:01:26.956888+00:00 [queued]>
+[2025-09-17T16:01:33.394+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_api_to_bi.dbt_deps manual__2025-09-17T14:01:26.956888+00:00 [queued]>
+[2025-09-17T16:01:33.395+0200] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-09-17T16:01:33.427+0200] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): dbt_deps> on 2025-09-17 14:01:26.956888+00:00
+[2025-09-17T16:01:33.435+0200] {standard_task_runner.py:64} INFO - Started process 283 to run task
+[2025-09-17T16:01:33.439+0200] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'etl_api_to_bi', 'dbt_deps', 'manual__2025-09-17T14:01:26.956888+00:00', '--job-id', '68', '--raw', '--subdir', 'DAGS_FOLDER/etl_api_to_bi.py', '--cfg-path', '/tmp/tmpm0kxen3i']
+[2025-09-17T16:01:33.442+0200] {standard_task_runner.py:91} INFO - Job 68: Subtask dbt_deps
+[2025-09-17T16:01:33.564+0200] {task_command.py:426} INFO - Running <TaskInstance: etl_api_to_bi.dbt_deps manual__2025-09-17T14:01:26.956888+00:00 [running]> on host 1621268d5064
+[2025-09-17T16:01:34.245+0200] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data' AIRFLOW_CTX_DAG_ID='etl_api_to_bi' AIRFLOW_CTX_TASK_ID='dbt_deps' AIRFLOW_CTX_EXECUTION_DATE='2025-09-17T14:01:26.956888+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-17T14:01:26.956888+00:00'
+[2025-09-17T16:01:34.247+0200] {taskinstance.py:430} INFO - ::endgroup::
+[2025-09-17T16:01:34.265+0200] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-09-17T16:01:34.267+0200] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', "docker exec dbt bash -lc 'cd /usr/app && dbt deps --profiles-dir /root/.dbt'"]
+[2025-09-17T16:01:34.294+0200] {subprocess.py:86} INFO - Output:
+[2025-09-17T16:01:36.841+0200] {subprocess.py:93} INFO - [0m14:01:36  Running with dbt=1.8.3
+[2025-09-17T16:01:38.216+0200] {subprocess.py:93} INFO - [0m14:01:38  Installing dbt-labs/dbt_utils
+[2025-09-17T16:01:47.951+0200] {subprocess.py:93} INFO - [0m14:01:47  Installed from version 1.3.1
+[2025-09-17T16:01:47.953+0200] {subprocess.py:93} INFO - [0m14:01:47  Up to date!
+[2025-09-17T16:01:50.246+0200] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-09-17T16:01:50.248+0200] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-09-17T16:01:50.377+0200] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_api_to_bi, task_id=dbt_deps, run_id=manual__2025-09-17T14:01:26.956888+00:00, execution_date=20250917T140126, start_date=20250917T140133, end_date=20250917T140150
+[2025-09-17T16:01:50.528+0200] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-09-17T16:01:50.618+0200] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-09-17T16:01:50.627+0200] {local_task_job_runner.py:222} INFO - ::endgroup::
