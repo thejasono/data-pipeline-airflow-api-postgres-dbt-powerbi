@@ -5,3 +5,4 @@ dbt-postgres==1.8.2
 requests==2.31.0
 python-dateutil==2.9.0.post0
 psycopg2-binary
+confluent-kafka==2.3.0
