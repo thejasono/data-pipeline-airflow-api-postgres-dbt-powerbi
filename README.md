@@ -27,5 +27,8 @@ docker compose run --rm dbt run
 docker compose run --rm dbt test
 ```
 
-Power BI should connect using the `bi_read` credentials and only see tables in the `public_analytics` schema.
+Power BI usage for this project is intentionally lightweight—the goal is simply to prove the pipeline delivers
+analytics tables that Power BI can read. Connect with the `bi_read` credentials and verify that the
+`public_analytics` schema tables are visible. A fully designed report or synthetic visuals are not required for
+sign-off.
 
