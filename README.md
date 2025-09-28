@@ -1,4 +1,5 @@
 # API → Postgres → dbt → Power BI
+![Diagramtic](https://github.com/user-attachments/assets/5e84b667-0f24-46bb-85e6-ee05d4039685)
 
 This stack loads raw data from the mock API into Postgres, transforms it with dbt, and exposes cleaned analytics tables (materialized in the `public_analytics` schema) for the `bi_read` user.
 
