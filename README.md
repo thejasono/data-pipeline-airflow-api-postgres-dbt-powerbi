@@ -6,7 +6,7 @@ This stack loads raw data from the mock API into Postgres, transforms it with db
 
 
 ## Services
-
+- **docker** – container runtime and packaging layer; provides consistent environments for Postgres, Airflow, dbt, and the mock API.
 - **postgres** – database used by all components
 - **mock-api** – provides sample API data
 - **dbt** – dbt CLI container with the project mounted at `/usr/app`
