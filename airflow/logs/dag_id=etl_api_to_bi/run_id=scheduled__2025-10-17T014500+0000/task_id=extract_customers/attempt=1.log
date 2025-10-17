@@ -1,0 +1,19 @@
+[2025-10-17T04:00:01.312+0200] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-10-17T04:00:01.474+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: etl_api_to_bi.extract_customers scheduled__2025-10-17T01:45:00+00:00 [queued]>
+[2025-10-17T04:00:01.495+0200] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: etl_api_to_bi.extract_customers scheduled__2025-10-17T01:45:00+00:00 [queued]>
+[2025-10-17T04:00:01.496+0200] {taskinstance.py:2306} INFO - Starting attempt 1 of 3
+[2025-10-17T04:00:01.528+0200] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): extract_customers> on 2025-10-17 01:45:00+00:00
+[2025-10-17T04:00:01.539+0200] {standard_task_runner.py:64} INFO - Started process 715 to run task
+[2025-10-17T04:00:01.548+0200] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'etl_api_to_bi', 'extract_customers', 'scheduled__2025-10-17T01:45:00+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/etl_api_to_bi.py', '--cfg-path', '/tmp/tmp4dphe1_g']
+[2025-10-17T04:00:01.556+0200] {standard_task_runner.py:91} INFO - Job 19: Subtask extract_customers
+[2025-10-17T04:00:01.731+0200] {task_command.py:426} INFO - Running <TaskInstance: etl_api_to_bi.extract_customers scheduled__2025-10-17T01:45:00+00:00 [running]> on host af95d5ead002
+[2025-10-17T04:00:02.313+0200] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='data' AIRFLOW_CTX_DAG_ID='etl_api_to_bi' AIRFLOW_CTX_TASK_ID='extract_customers' AIRFLOW_CTX_EXECUTION_DATE='2025-10-17T01:45:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-10-17T01:45:00+00:00'
+[2025-10-17T04:00:02.314+0200] {taskinstance.py:430} INFO - ::endgroup::
+[2025-10-17T04:00:02.418+0200] {crypto.py:82} WARNING - empty cryptography key - values will not be stored encrypted.
+[2025-10-17T04:00:02.418+0200] {base.py:84} INFO - Using connection ID 'postgres_default' for task execution.
+[2025-10-17T04:00:02.454+0200] {python.py:237} INFO - Done. Returned value was: 1
+[2025-10-17T04:00:02.457+0200] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-10-17T04:00:02.503+0200] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=etl_api_to_bi, task_id=extract_customers, run_id=scheduled__2025-10-17T01:45:00+00:00, execution_date=20251017T014500, start_date=20251017T020001, end_date=20251017T020002
+[2025-10-17T04:00:02.569+0200] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2025-10-17T04:00:02.610+0200] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-10-17T04:00:02.613+0200] {local_task_job_runner.py:222} INFO - ::endgroup::
