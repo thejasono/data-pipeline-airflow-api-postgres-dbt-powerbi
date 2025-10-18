@@ -17,7 +17,7 @@ This stack loads raw data from the mock API into Postgres, transforms it with db
 Start the core services (dbt is invoked on-demand by the Airflow DAG):
 
 ```bash
-docker compose up -d postgres mock-api airflow
+docker compose up -d --build
 ```
 
 Airflow performs its own database initialization on startup, so no separate init container is required.
